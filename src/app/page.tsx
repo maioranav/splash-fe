@@ -1,4 +1,3 @@
-import { useState } from "react";
 import RadioPlayer from "./components/RadioPlayer";
 import "./page.module.scss";
 
