@@ -1,3 +1,4 @@
+import CustomNav from "./components/CustomNav";
 import "./globals.scss";
 import type { Metadata } from "next";
 
@@ -10,7 +11,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="it">
-      <body>{children}</body>
+      <body>
+        <header>
+          <CustomNav />
+        </header>
+        <main>{children}</main>
+      </body>
     </html>
   );
 }

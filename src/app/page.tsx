@@ -1,6 +1,9 @@
-import Image from "next/image";
-import styles from "./page.module.scss";
+import "./page.module.scss";
 
 export default function Home() {
-  return <main>Website compiles!</main>;
+  return (
+    <>
+      <main>Website compiles!</main>
+    </>
+  );
 }
