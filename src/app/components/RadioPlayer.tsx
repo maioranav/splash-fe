@@ -27,11 +27,11 @@ export default function RadioPlayer() {
 
         <div className="ap-title d-flex flex-column px-3">
           <p className="d-flex align-items-center">
-            <div className={"bars " + (isPlaying ? "" : "not-playing")}>
+            <span className={"bars " + (isPlaying ? "" : "not-playing")}>
               <span />
               <span />
               <span />
-            </div>
+            </span>
             <span>Currently Playing:</span>
           </p>
           <iframe height={120} src={process.env.NEXT_PUBLIC_BASE_URL + "/air/onair23.html"}></iframe>

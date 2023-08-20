@@ -1,4 +1,5 @@
 import RadioPlayer from "./components/RadioPlayer";
+import TvPlayer from "./components/TvPlayer";
 import "./page.module.scss";
 
 export default function Home() {
@@ -9,7 +10,9 @@ export default function Home() {
           <div className="col-12 col-lg-6 p-2">
             <RadioPlayer />
           </div>
-          <div className="col-12 col-lg-6 p-2">qua ci va qualcosa tipo notizie o player video</div>
+          <div className="col-12 col-lg-6 p-2">
+            <TvPlayer></TvPlayer>
+          </div>
         </div>
       </main>
     </>
