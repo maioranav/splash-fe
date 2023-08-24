@@ -20,15 +20,22 @@ export default function Home() {
 
   return (
     <>
-      <main className="container">
-        <div className="row">
-          <div className="col-12 col-lg-6 p-2">
-            <RadioPlayer />
+      <main>
+        <section className="bg-body-tertiary">
+          <div className="container">
+            <div className="row">
+              <div className="col-12 col-lg-6 p-2">
+                <RadioPlayer />
+              </div>
+              <div className="col-12 col-lg-6 p-2">
+                <TvPlayer options={tvOptions}></TvPlayer>
+              </div>
+              <div className="col-12 my-4">
+                <h5 className="text-center">ascolta la diretta in streaming o guarda i video della Splash 40 sulla nostra nuova Splash TV</h5>
+              </div>
+            </div>
           </div>
-          <div className="col-12 col-lg-6 p-2">
-            <TvPlayer options={tvOptions}></TvPlayer>
-          </div>
-        </div>
+        </section>
       </main>
     </>
   );
