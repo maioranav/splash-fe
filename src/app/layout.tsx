@@ -1,4 +1,4 @@
-import CustomNav from "./components/CustomNav";
+import CustomNav from "./components/CustomNav/CustomNav";
 import "./globals.scss";
 import type { Metadata } from "next";
 
