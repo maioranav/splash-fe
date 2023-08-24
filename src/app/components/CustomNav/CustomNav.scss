@@ -1,3 +1,19 @@
 .custom-navbar {
   height: 6rem;
 }
+.nav-link {
+  font-weight: 600 !important;
+  margin: 0 10px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  &:hover {
+    background-color: var(--bs-primary);
+    color: var(--bs-light) !important;
+  }
+  &:last-child {
+    margin-right: 0;
+  }
+  &:first-child {
+    margin-left: 0;
+  }
+}
