@@ -1,0 +1,39 @@
+.evidenziaprimary {
+  position: relative;
+  font-weight: 600 !important;
+  padding: 8px 15px;
+  text-transform: uppercase;
+  border-radius: 8px 0 8px 8px;
+  background-color: var(--bs-primary);
+  color: var(--bs-light);
+  z-index: 2;
+  transition: all 0.5s ease;
+  &:hover {
+    color: var(--bs-primary) !important;
+    background-color: var(--bs-light) !important;
+  }
+}
+.underlined {
+  position: relative;
+  z-index: 2;
+  border-bottom: 3px solid var(--bs-primary);
+  transition: all 0.3s ease;
+  &:hover {
+    border-color: transparent;
+  }
+}
+
+.homeimage {
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center;
+  scale: 1;
+  border-radius: 20px 0 20px 20px;
+  transition: all 0.5s ease;
+  box-shadow: 2px 2px 10px rgb(104, 113, 142);
+  rotate: 10deg;
+  &:hover {
+    border-radius: 20px 20px 20px 0;
+    rotate: 0;
+  }
+}
