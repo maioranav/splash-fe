@@ -9,7 +9,7 @@ export default function RadioPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
 
   let updateBackground: NodeJS.Timeout;
-  let [winWidth, setWinWidth] = useState(window.innerWidth);
+  let [winWidth, setWinWidth] = useState(1920);
 
   const handlePlay = () => {
     player && player.play();
@@ -48,7 +48,6 @@ export default function RadioPlayer() {
   }, []);
 
   useEffect(() => {
-    console.log(winWidth);
     if (winWidth < 576) {
       setBackground();
     } else {

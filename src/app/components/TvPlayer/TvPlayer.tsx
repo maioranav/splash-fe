@@ -12,13 +12,13 @@ interface VideoOptions {
     responsive: boolean;
     fluid?: boolean;
     fill?: boolean;
-    sources: [
-      {
-        src: string;
-        type: string;
-      }
-    ];
+    sources: VideoSources[];
   };
+}
+
+interface VideoSources {
+  src: string;
+  type: string;
 }
 
 export const TvPlayer = ({ options }: VideoOptions) => {
