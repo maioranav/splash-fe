@@ -59,6 +59,9 @@ export default function RadioPlayer() {
   return (
     <>
       <div className="audio-player d-flex p-4 bg-body-tertiary rounded-3 shadow my-4">
+        <div className="position-absolute bg-primary text-light fs-6 py-2 px-4 shadow rounded z-1" style={{ top: "-20px", right: "50px" }}>
+          FM
+        </div>
         <div className="ap-cover d-none d-sm-block">
           <iframe className="rounded-3 shadow" width={155} height={155} src={process.env.NEXT_PUBLIC_BASE_URL + "/air/pic23.html"}></iframe>
         </div>

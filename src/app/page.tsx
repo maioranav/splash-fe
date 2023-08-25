@@ -24,17 +24,17 @@ export default function Home() {
       <main>
         <section className="bg-body-tertiary pt-5">
           <div className="container">
-            <div className="row">
+            <div className="row mt-4">
               <h2 className="text-center my-5">
                 <span className={styles.evidenziaprimary}>La Radio</span> in continua <span className={styles.underlined}>evoluzione</span>!
               </h2>
               <h5 className="text-center">Ascoltaci in Live Streaming o Guardaci sulla nostra Splash TV!</h5>
             </div>
             <div className="row">
-              <div className="col-12 col-lg-6 p-2">
+              <div className="col-12 col-lg-6 p-4">
                 <RadioPlayer />
               </div>
-              <div className="col-12 col-lg-6 p-2">
+              <div className="col-12 col-lg-6 p-4">
                 <TvPlayer options={tvOptions} />
               </div>
             </div>
