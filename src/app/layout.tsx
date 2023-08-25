@@ -13,7 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="it">
       <body>
-        <header>
+        <header className="position-fixed w-100 z-2">
           <CustomNav />
         </header>
         <main>{children}</main>
