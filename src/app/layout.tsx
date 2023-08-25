@@ -1,3 +1,4 @@
+import CustomFooter from "./components/CustomFooter/CustomFooter";
 import CustomNav from "./components/CustomNav/CustomNav";
 import "./globals.scss";
 import type { Metadata } from "next";
@@ -16,6 +17,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <CustomNav />
         </header>
         <main>{children}</main>
+        <footer>
+          <CustomFooter />
+        </footer>
       </body>
     </html>
   );

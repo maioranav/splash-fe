@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <>
       <main>
-        <section className="bg-body-tertiary">
+        <section className="bg-body-tertiary pt-5">
           <div className="container">
             <div className="row">
               <h2 className="text-center my-5">
@@ -38,6 +38,7 @@ export default function Home() {
                 <TvPlayer options={tvOptions} />
               </div>
             </div>
+            <div className="row py-4">SCARICA LAPP</div>
           </div>
         </section>
         <section className="vh-100">

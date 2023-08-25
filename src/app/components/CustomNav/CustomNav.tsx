@@ -8,7 +8,7 @@ export default function CustomNav() {
   return (
     <div className="bg-body-tertiary">
       <img src={navbarbg.src} alt="" style={{ position: "absolute", opacity: 0.3 }} />
-      <Navbar expand="lg" className="container custom-navbar">
+      <Navbar id="custNavStyle" expand="lg" className="container custom-navbar">
         <Container fluid>
           <Navbar.Brand href="/">
             <Image src="/imgs/logo_splash_tr.png" alt="Radio Splash Logo" width={110} height={53} />
