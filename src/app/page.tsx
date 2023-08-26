@@ -2,6 +2,8 @@ import RadioPlayer from "./components/RadioPlayer/RadioPlayer";
 import Image from "next/image";
 import TvPlayer from "./components/TvPlayer/TvPlayer";
 import styles from "./page.module.scss";
+import appstore from "../../public/assets/appstore_359x93.png";
+import playstore from "../../public/assets/googleplay_359x93.png";
 
 export default function Home() {
   const tvOptions = {
@@ -38,13 +40,36 @@ export default function Home() {
                 <TvPlayer options={tvOptions} />
               </div>
             </div>
-            <div className="row py-4">SCARICA LAPP</div>
+            <div className="row py-5 my-5">
+              <h3 className="d-flex justify-content-center align-items-center flex-wrap w-100 my-4">
+                Portaci sempre con te
+                <span className="ms-2 p-3 bg-warning fw-bold">SCARICA L&apos;APP! </span>
+              </h3>
+              <div className="d-flex justify-content-center flex-wrap">
+                <Image
+                  className="m-3 rounded-2"
+                  src={appstore.src}
+                  height={53}
+                  width={200}
+                  alt="Scarica l'app su App Store"
+                  style={{ outline: "2px solid var(--bs-warning)", outlineOffset: "3px" }}
+                />
+                <Image
+                  className="m-3 rounded-2"
+                  src={playstore.src}
+                  height={53}
+                  width={200}
+                  alt="Scarica l'app su Google Play"
+                  style={{ outline: "2px solid var(--bs-primary)", outlineOffset: "3px", MozOutlineRadius: "15px" }}
+                />
+              </div>
+            </div>
           </div>
         </section>
-        <section className="vh-100">
-          <div className="container h-100">
+        <section className="py-5">
+          <div className="container h-100 d-flex align-items-center">
             <div className="row h-100">
-              <div id="anni70" className="col-12 col-lg-6 h-100 d-flex flex-column justify-content-center">
+              <div id="anni70" className="col-12 col-lg-6 h-100 d-flex flex-column justify-content-center py-5">
                 <h2 className="m-0">
                   <span className="bg-primary p-3 text-light mb-2">Una lunghissima passione:</span>
                 </h2>
@@ -70,7 +95,7 @@ export default function Home() {
                   suono in uscita decisamente professionale.
                 </p>
               </div>
-              <div className="col-12 col-lg-6 d-flex h-100 justify-content-center align-items-center overflow-hidden">
+              <div className="col-12 col-lg-6 h-100 justify-content-center align-items-center overflow-hidden d-none d-lg-flex">
                 <Image
                   width={450}
                   height={450}
@@ -83,9 +108,9 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="bg-body-tertiary vh-100">
-          <div className="container h-100">
-            <div id="anni8090" className="row h-100">
+        <section className="bg-body-tertiary py-5">
+          <div className="container h-100 d-flex align-items-center">
+            <div id="anni8090" className="row h-100 w-100">
               <div className="col-12 col-lg-6 d-flex h-100 justify-content-center align-items-center overflow-hidden">
                 <Image
                   width={450}
@@ -96,7 +121,7 @@ export default function Home() {
                   alt=""
                 />
               </div>
-              <div className="col-12 col-lg-6 h-100 d-flex flex-column justify-content-center">
+              <div className="col-12 col-lg-6 h-100 d-flex flex-column justify-content-center py-5">
                 <h5 className="mb-4">
                   <span className="bg-primary text-light p-2">Gli anni &apos;80 e &apos;90</span> L&apos;Evoluzione
                 </h5>
@@ -121,10 +146,10 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="vh-100">
-          <div className="container h-100">
-            <div id="anni2000" className="row h-100">
-              <div className="col-12 col-lg-6 h-100 d-flex flex-column justify-content-center">
+        <section className="py-5">
+          <div className="container h-100 d-flex align-items-center">
+            <div id="anni2000" className="row h-100 w-100">
+              <div className="col-12 col-lg-6 h-100 d-flex flex-column justify-content-center py-5">
                 <h5 className="mb-4">
                   <span className="bg-primary text-light p-2">Gli anni 2000</span>
                 </h5>

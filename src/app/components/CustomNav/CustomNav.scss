@@ -17,5 +17,13 @@
     margin-left: 0;
   }
 }
-#custNavStyle {
+.social-links {
+  a {
+    color: var(--bs-tertiary);
+    transition: color 0.5s ease;
+    padding: 5px;
+    &:hover {
+      color: var(--bs-primary);
+    }
+  }
 }

@@ -6,7 +6,7 @@
   border-radius: 8px 0 8px 8px;
   background-color: var(--bs-primary);
   color: var(--bs-light);
-  z-index: 2;
+  z-index: 1;
   transition: all 0.5s ease;
   &:hover {
     color: var(--bs-primary) !important;
@@ -15,7 +15,7 @@
 }
 .underlined {
   position: relative;
-  z-index: 2;
+  z-index: 1;
   border-bottom: 3px solid var(--bs-primary);
   transition: all 0.3s ease;
   &:hover {
