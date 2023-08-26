@@ -1,5 +1,6 @@
 import CustomFooter from "./components/CustomFooter/CustomFooter";
 import CustomNav from "./components/CustomNav/CustomNav";
+import GoTopButton from "./components/GoTopButton/GoTopButton";
 import "./globals.scss";
 import type { Metadata } from "next";
 
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer>
           <CustomFooter />
         </footer>
+        <GoTopButton />
       </body>
     </html>
   );

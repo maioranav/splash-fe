@@ -23,7 +23,7 @@ export default function CustomNav() {
                 </a>
               </div>
             </Navbar.Brand>
-            {false && <Navbar.Toggle aria-controls="navbarScroll" />}
+            <div className="d-block d-md-none">ICONE MOBILE</div>
             <Navbar.Collapse id="navbarScroll">
               <Nav className="me-auto my-2 my-lg-0 w-100 justify-content-end" style={{ maxHeight: "100px" }} navbarScroll>
                 <Nav.Link href="#action1">Home</Nav.Link>

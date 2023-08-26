@@ -46,22 +46,26 @@ export default function Home() {
                 <span className="ms-2 p-3 bg-warning fw-bold">SCARICA L&apos;APP! </span>
               </h3>
               <div className="d-flex justify-content-center flex-wrap">
-                <Image
-                  className="m-3 rounded-2"
-                  src={appstore.src}
-                  height={53}
-                  width={200}
-                  alt="Scarica l'app su App Store"
-                  style={{ outline: "2px solid var(--bs-warning)", outlineOffset: "3px" }}
-                />
-                <Image
-                  className="m-3 rounded-2"
-                  src={playstore.src}
-                  height={53}
-                  width={200}
-                  alt="Scarica l'app su Google Play"
-                  style={{ outline: "2px solid var(--bs-primary)", outlineOffset: "3px", MozOutlineRadius: "15px" }}
-                />
+                <a href="https://apps.apple.com/it/app/radio-splash-app-ufficiale/id1463380760" target="_blank">
+                  <Image
+                    className="m-3 rounded-2"
+                    src={appstore.src}
+                    height={53}
+                    width={200}
+                    alt="Scarica l'app su App Store"
+                    style={{ outline: "2px solid var(--bs-warning)", outlineOffset: "3px" }}
+                  />
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.inmystream.radiosplash&hl=it&gl=US" target="_blank">
+                  <Image
+                    className="m-3 rounded-2"
+                    src={playstore.src}
+                    height={53}
+                    width={200}
+                    alt="Scarica l'app su Google Play"
+                    style={{ outline: "2px solid var(--bs-primary)", outlineOffset: "3px", MozOutlineRadius: "15px" }}
+                  />
+                </a>
               </div>
             </div>
           </div>
