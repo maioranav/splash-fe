@@ -1,0 +1,120 @@
+{
+  "podcast": [
+    {
+      "titolo": "Kaffeine",
+      "artista": "Vincenzo Carcione",
+      "img": "/kaffeine/sfondokaffeine.png",
+      "sessioni": [
+        { "sessione": 1, "url": "/kaffeine/kaffeine01.mp3" },
+        { "sessione": 2, "url": "/kaffeine/kaffeine02.mp3" },
+        { "sessione": 3, "url": "/kaffeine/kaffeine03.mp3" },
+        { "sessione": 4, "url": "/kaffeine/kaffeine04.mp3" }
+      ]
+    },
+    {
+      "titolo": "Kaffeine On Stage",
+      "artista": "Vincenzo Carcione",
+      "img": "/kaffeine/sfondokaffeine.png",
+      "sessioni": [
+        { "sessione": 1, "url": "/kaffeine/kaffeinestage01.mp3" },
+        { "sessione": 2, "url": "/kaffeine/kaffeinestage02.mp3" }
+      ]
+    },
+    {
+      "titolo": "Kocaine",
+      "artista": "Vincenzo Carcione",
+      "img": "/kocaine/sfondokocaine.png",
+      "sessioni": [
+        { "sessione": 1, "url": "/kocaine/kocaine01.mp3" },
+        { "sessione": 2, "url": "/kocaine/kocaine02.mp3" },
+        { "sessione": 3, "url": "/kocaine/kocaine03.mp3" },
+        { "sessione": 4, "url": "/kocaine/kocaine04.mp3" }
+      ]
+    },
+    {
+      "titolo": "Sabato da Greg",
+      "artista": "Greg DJ",
+      "img": "/sabatodagreg/sfondosabatodagreg.png",
+      "sessioni": [
+        { "sessione": 1, "url": "/sabatodagreg/sabatodagreg01.mp3" },
+        { "sessione": 2, "url": "/sabatodagreg/sabatodagreg02.mp3" },
+        { "sessione": 3, "url": "/sabatodagreg/sabatodagreg03.mp3" },
+        { "sessione": 4, "url": "/sabatodagreg/sabatodagreg04.mp3" }
+      ]
+    },
+    {
+      "titolo": "House Selection",
+      "artista": "Andrea Corso",
+      "img": "/houseselection/sfondohouseselection.png",
+      "sessioni": [
+        { "sessione": 1, "url": "/houseselection/houseselection01.mp3" },
+        { "sessione": 2, "url": "/houseselection/houseselection02.mp3" }
+      ]
+    },
+    {
+      "titolo": "Vinyls",
+      "artista": "Greg DJ",
+      "img": "/vinyls/sfondovinyls.png",
+      "sessioni": [{ "sessione": 1, "url": "/vinyls/vinyls.mp3" }]
+    },
+    {
+      "titolo": "Acid Rain",
+      "artista": "Davide Nastasi",
+      "img": "/acidrain/sfondoacidrain.png",
+      "sessioni": [{ "sessione": 1, "url": "/acidrain/acidrain.mp3" }]
+    },
+    {
+      "titolo": "Afterlife",
+      "artista": "Peter DJ",
+      "img": "/afterlife/sfondoafterlife.png",
+      "sessioni": [
+        { "sessione": 1, "url": "/afterlife/afterlife01.mp3" },
+        { "sessione": 2, "url": "/afterlife/afterlife02.mp3" }
+      ]
+    },
+    {
+      "titolo": "Forbidden House",
+      "artista": "Giuseppe Mondo",
+      "img": "/forbiddenhouse/sfondoforbiddenhouse.png",
+      "sessioni": [{ "sessione": 1, "url": "/forbiddenhouse/forbiddenhouse.mp3" }]
+    },
+    {
+      "titolo": "Miami House",
+      "artista": "Enzo C.",
+      "img": "/miamihouse/sfondomiamihouse.png",
+      "sessioni": [{ "sessione": 1, "url": "/miamihouse/miamihouse.mp3" }]
+    },
+    {
+      "titolo": "Music Box",
+      "artista": "Max DJ",
+      "img": "/musicbox/sfondomusicbox.png",
+      "sessioni": [
+        { "sessione": 1, "url": "/musicbox/musicboxmax01.mp3" },
+        { "sessione": 2, "url": "/musicbox/musicboxmax02.mp3" },
+        { "sessione": 3, "url": "/musicbox/musicboxmax03.mp3" },
+        { "sessione": 4, "url": "/musicbox/musicboxmax04.mp3" }
+      ]
+    },
+    {
+      "titolo": "Music Box",
+      "artista": "Filippo Maggio",
+      "img": "/musicbox/sfondomusicbox.png",
+      "sessioni": [
+        { "sessione": 1, "url": "/musicbox/musicboxfilippo01.mp3" },
+        { "sessione": 2, "url": "/musicbox/musicboxfilippo02.mp3" }
+      ]
+    },
+    {
+      "titolo": "Groovin",
+      "artista": "Enzo C.",
+      "img": "/groovin/sfondogroovin.png",
+      "sessioni": [{ "sessione": 1, "url": "/groovin/groovin.mp3" }]
+    },
+    {
+      "titolo": "Subway",
+      "artista": "Dave Scott",
+      "img": "/subway/sfondosubway.png",
+      "sessioni": [{ "sessione": 1, "url": "/subway/subway.mp3" }]
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "staff": [
+    {
+      "nome": "Vincenzo Maiorana",
+      "ruolo": "Tecnico",
+      "immagine": "vincenzomaiorana.png",
+      "facebook": "vmaiorana",
+      "sitoweb": "https://www.vincenzomaiorana.it",
+      "instagram": "vmaiorana"
+    },
+    {
+      "nome": "Vincenzo Carcione",
+      "ruolo": "Deejay",
+      "immagine": "vincenzocarcione.png",
+      "facebook": "vincenzocarcione",
+      "youtube": "vincenzocarcione",
+      "sitoweb": "https://www.vincenzocarcione.com",
+      "instagram": "vincenzo.carcione"
+    },
+    {
+      "nome": "Davide Nastasi",
+      "ruolo": "Deejay",
+      "immagine": "davidenastasi.png"
+    },
+    {
+      "nome": "Filippo Maggio",
+      "ruolo": "Deejay"
+    },
+    {
+      "nome": "Luca Carcassi",
+      "ruolo": "Speaker",
+      "immagine": "lucacarcassi.png"
+    },
+    {
+      "nome": "Giò",
+      "ruolo": "Speaker",
+      "immagine": "giovannagitto.png",
+      "facebook": "giovanna.gitto.7"
+    },
+    {
+      "nome": "Andrea Corso",
+      "ruolo": "Deejay",
+      "immagine": "andreacorso.png",
+      "mixcloud": "AndreaCorso",
+      "youtube": "AndreaCorsoHouseMusic"
+    },
+    {
+      "nome": "Peter DJ",
+      "ruolo": "Deejay",
+      "immagine": "peterdj.png"
+    },
+    {
+      "nome": "Max DJ",
+      "ruolo": "Deejay",
+      "immagine": "maxmerlino.png"
+    },
+    {
+      "nome": "Greg DJ",
+      "ruolo": "Deejay",
+      "immagine": "gregdj.png",
+      "facebook": "sabatodagreg",
+      "instagram": "gregdeejay"
+    },
+    {
+      "nome": "Vincenzo Pandolfo",
+      "ruolo": "Speaker",
+      "immagine": "vincenzopandolfo.png"
+    },
+    {
+      "nome": "Nicky",
+      "ruolo": "Speaker",
+      "immagine": "nicoladamico.png",
+      "facebook": "nicola.damico.90226"
+    },
+    {
+      "nome": "Enzo C.",
+      "ruolo": "Deejay",
+      "immagine": "enzoc.png"
+    },
+    {
+      "nome": "Dave Scott",
+      "ruolo": "Deejay",
+      "immagine": "davescott.png"
+    },
+    {
+      "nome": "Fortunato Grasso",
+      "immagine": "fortunato.png"
+    },
+    {
+      "nome": "Giuseppe Mondo",
+      "ruolo": "Deejay",
+      "immagine": "giuseppemondo.png",
+      "facebook": "Giuseppe-Mondo-DJ-101128819620"
+    },
+    {
+      "nome": "Eugenio Grillo",
+      "ruolo": "Speaker",
+      "immagine": "eugeniogrillo.png",
+      "facebook": "Eugenio-Grillo-Page-187140431481492",
+      "instagram": "eugeniogrillo61"
+    },
+    {
+      "nome": "Giuseppe Valdes",
+      "ruolo": "Speaker",
+      "immagine": "giuseppevaldes.png"
+    }
+  ]
+}
