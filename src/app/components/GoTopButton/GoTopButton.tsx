@@ -24,7 +24,7 @@ const GoTopButton = () => {
     });
   };
 
-  window?.addEventListener("scroll", toggleVisible);
+  globalThis.window?.addEventListener("scroll", toggleVisible);
 
   return (
     <div className={style.gotopbtn}>
