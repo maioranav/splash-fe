@@ -1,6 +1,7 @@
 "use client";
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import Image from "next/image";
+import Link from "next/link";
 import { BsInstagram, BsFacebook } from "react-icons/bs";
 import navbarbg from "../../../../public/assets/wave.svg";
 import "./CustomNav.scss";
@@ -26,12 +27,16 @@ export default function CustomNav() {
             <div className="d-block d-md-none">ICONE MOBILE</div>
             <Navbar.Collapse id="navbarScroll">
               <Nav className="me-auto my-2 my-lg-0 w-100 justify-content-end" style={{ maxHeight: "100px" }} navbarScroll>
-                <Nav.Link href="#action1">Home</Nav.Link>
+                <Link className="nav-link" href="/">
+                  Home
+                </Link>
                 <Nav.Link href="#action2" disabled>
                   Staff
                 </Nav.Link>
                 <NavDropdown title="Palinsesto" id="navbarScrollingDropdown">
-                  <NavDropdown.Item href="#action3">Programmazione</NavDropdown.Item>
+                  <Link className="dropdown-item" href="/palinsesto">
+                    Programmazione
+                  </Link>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="#action4">Replay</NavDropdown.Item>
                 </NavDropdown>
