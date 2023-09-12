@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="it">
-      <body>
+      <body className="minvh100">
         <header className="position-fixed w-100 z-2">
           <CustomNav />
         </header>

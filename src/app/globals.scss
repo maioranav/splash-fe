@@ -19,3 +19,21 @@ span {
   user-select: none;
   cursor: default;
 }
+
+body {
+  position: relative;
+}
+
+.minvh100 {
+  min-height: 100dvh;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
