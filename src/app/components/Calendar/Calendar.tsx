@@ -56,7 +56,7 @@ export const Calendar = () => {
         setTableBeenGenerated(true);
       }
     }
-  });
+  }, []);
 
   useEffect(() => {
     if (!hasTableBeenGenerated) return;
