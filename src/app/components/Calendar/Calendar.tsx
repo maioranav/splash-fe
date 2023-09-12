@@ -2,9 +2,11 @@
 import { useEffect, useState } from "react";
 import "./Calendar.scss";
 import bepalinsesto from "../../../../public/palinsesto.json";
+import { Spinner } from "react-bootstrap";
 
 export const Calendar = () => {
   const [hasTableBeenGenerated, setTableBeenGenerated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const generateTableStructure = (hoursOfDay: number, daysOfWeek: number) => {
     let hours = "";
@@ -24,6 +26,7 @@ export const Calendar = () => {
   };
 
   const generateContent = async () => {
+    setIsLoading(true);
     const palinsesto = bepalinsesto.palinsesto;
     for (let d = 0; d < palinsesto.length; d++) {
       for (let el = 0; el < palinsesto[d].length; el++) {
@@ -45,10 +48,12 @@ export const Calendar = () => {
         }
       }
     }
+    setIsLoading(false);
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
+    setIsLoading(true);
     if (globalThis.document) {
       let bodyCalendar = globalThis.document.querySelector(".bodyCalendar");
       if (bodyCalendar) {
@@ -56,6 +61,7 @@ export const Calendar = () => {
         setTableBeenGenerated(true);
       }
     }
+    setIsLoading(false);
   }, []);
 
   useEffect(() => {
@@ -80,8 +86,9 @@ export const Calendar = () => {
                 <th>Domenica</th>
               </tr>
             </thead>
-            <tbody className="bodyCalendar">Loading...</tbody>
+            <tbody className="bodyCalendar"></tbody>
           </table>
+          {isLoading && <Spinner variant="primary" />}
         </div>
       </div>
     </div>
