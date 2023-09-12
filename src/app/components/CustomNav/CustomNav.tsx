@@ -17,12 +17,12 @@ export default function CustomNav() {
         <Navbar id="custNavStyle" expand="md" className="container custom-navbar">
           <Container fluid>
             <Navbar.Brand href="/">
-              <Image src="/imgs/logo_splash_tr.png" alt="Radio Splash Logo" width={110} height={53} />
+              <Image src="/imgs/logo_splash_tr.png" alt="Radio Splash Logo" width={103} height={53} />
               <div className="d-inline p-2 text-muted social-links">
-                <a href="https://fb.me/radiosplash" target="_blank">
+                <a href="https://fb.me/radiosplash" title="radiosplash su facebook" target="_blank">
                   <BsFacebook />
                 </a>
-                <a href="https://www.instagram.com/radiosplash/" target="_blank">
+                <a href="https://www.instagram.com/radiosplash/" title="radiosplash su instagram" target="_blank">
                   <BsInstagram />
                 </a>
               </div>
