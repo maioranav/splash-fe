@@ -10,7 +10,10 @@ export default function CustomNav() {
   return (
     <>
       <div className="bg-body-tertiary">
-        <img src={navbarbg.src} alt="" style={{ position: "absolute", opacity: 0.3, zIndex: 0 }} />
+        {
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={navbarbg.src} alt="" style={{ position: "absolute", opacity: 0.3, zIndex: 0 }} />
+        }
         <Navbar id="custNavStyle" expand="md" className="container custom-navbar">
           <Container fluid>
             <Navbar.Brand href="/">
@@ -30,19 +33,21 @@ export default function CustomNav() {
                 <Link className="nav-link" href="/">
                   Home
                 </Link>
-                <Nav.Link href="#action2" disabled>
+                <Link className="nav-link" href="/staff">
                   Staff
-                </Nav.Link>
+                </Link>
                 <NavDropdown title="Palinsesto" id="navbarScrollingDropdown">
                   <Link className="dropdown-item" href="/palinsesto">
                     Programmazione
                   </Link>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action4">Replay</NavDropdown.Item>
+                  <Link className="dropdown-item" href="/replay">
+                    Replay
+                  </Link>
                 </NavDropdown>
-                <Nav.Link href="#" disabled>
+                <Link className="nav-link" href="/contatti">
                   Contatti
-                </Nav.Link>
+                </Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
