@@ -3,10 +3,11 @@
 import { useState } from "react";
 import { BsPlayFill, BsPauseFill } from "react-icons/bs";
 import "./RadioPlayer.scss";
+import { playerRef } from "../AudioPlayer";
 
 export default function RadioPlayer() {
-  const [player] = useState(typeof Audio !== "undefined" && new Audio(process.env.NEXT_PUBLIC_BASE_AUDIO_STREAM + "/stream"));
-  const [isPlaying, setIsPlaying] = useState(false);
+  const player = playerRef.current;
+  const [isPlaying, setIsPlaying] = useState(!player?.paused);
 
   const handlePlay = () => {
     player && player.play();
