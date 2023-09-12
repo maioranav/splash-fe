@@ -61,7 +61,7 @@ export const TvPlayer = ({ options }: VideoOptions) => {
   }, [playerRef]);
 
   return (
-    <div className="my-4 position-relative" style={{ height: 210 }}>
+    <div className="my-4 position-relative videocontainer-height">
       <div className="position-absolute bg-warning fs-6 py-2 px-4 shadow rounded z-1" style={{ top: "-20px", right: "50px" }}>
         TV
       </div>
