@@ -1,5 +1,7 @@
 import { Calendar } from "../components/Calendar/Calendar";
 import palinsesto from "../../../public/palinsesto.json";
+import { eachDayOfInterval, format, getWeek } from "date-fns";
+import { it } from "date-fns/locale";
 
 export interface Programmazione {
   titolo: string;
@@ -9,6 +11,8 @@ export interface Programmazione {
 }
 
 export default function Palinsesto() {
+  const weekdays = ["Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato", "Domenica"];
+
   return (
     <>
       <main>
@@ -24,7 +28,7 @@ export default function Palinsesto() {
               {palinsesto.palinsesto.map((el, i) => (
                 <>
                   <div key={"day-" + i} className="giorno-settimana">
-                    Giorno {i}
+                    {weekdays[i]}
                   </div>
                   <ul className="settimana">
                     {el.map((p, pi) => (
