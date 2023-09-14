@@ -1,11 +1,13 @@
 .custom-navbar {
   height: 6rem;
 }
+
 .nav-link {
   font-weight: 600 !important;
   margin: 0 10px;
   text-transform: uppercase;
   border-radius: 8px;
+  transition: border-end-start-radius 0.3s ease;
   &:hover {
     background-color: var(--bs-primary);
     color: var(--bs-light) !important;
@@ -17,18 +19,27 @@
     margin-left: 0;
   }
 }
+
 .social-links {
   a {
     color: var(--bs-tertiary);
     transition: color 0.5s ease;
     padding: 5px;
+
     &:hover {
       color: var(--bs-primary);
     }
   }
 }
+
 .mobile-nav-link {
-  font-size: 1.3rem !important;
+  font-size: 1.1rem !important;
   padding: 4px 8px !important;
   text-align: center;
+}
+
+.active-link {
+  border-bottom: 3px solid var(--bs-primary) !important;
+  border-end-start-radius: 0;
+  border-end-end-radius: 0;
 }

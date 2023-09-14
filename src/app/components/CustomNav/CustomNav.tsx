@@ -1,13 +1,15 @@
 "use client";
+import "./CustomNav.scss";
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
+import { GoCalendar, GoHome, GoMail, GoPeople, GoReply } from "react-icons/go";
+import { BsInstagram, BsFacebook } from "react-icons/bs";
 import Image from "next/image";
 import Link from "next/link";
-import { BsInstagram, BsFacebook } from "react-icons/bs";
 import navbarbg from "../../../../public/assets/wave.svg";
-import "./CustomNav.scss";
-import { GoCalendar, GoHome, GoMail, GoPeople, GoReply } from "react-icons/go";
+import { usePathname } from "next/navigation";
 
 export default function CustomNav() {
+  const pathname = usePathname();
   return (
     <>
       <div className="bg-body-tertiary">
@@ -29,28 +31,28 @@ export default function CustomNav() {
               </div>
             </Navbar.Brand>
             <div className="d-flex d-md-none">
-              <Link className="nav-link mobile-nav-link" href="/">
+              <Link className={pathname == "/" ? "nav-link mobile-nav-link active-link" : "nav-link mobile-nav-link"} href="/">
                 <GoHome />
               </Link>
-              <Link className="nav-link mobile-nav-link" href="/staff">
+              <Link className={pathname == "/staff" ? "nav-link mobile-nav-link active-link" : "nav-link mobile-nav-link"} href="/staff">
                 <GoPeople />
               </Link>
-              <Link className="nav-link mobile-nav-link" href="/palinsesto">
+              <Link className={pathname == "/palinsesto" ? "nav-link mobile-nav-link active-link" : "nav-link mobile-nav-link"} href="/palinsesto">
                 <GoCalendar />
               </Link>
-              <Link className="nav-link mobile-nav-link" href="/replay">
+              <Link className={pathname == "/replay" ? "nav-link mobile-nav-link active-link" : "nav-link mobile-nav-link"} href="/replay">
                 <GoReply />
               </Link>
-              <Link className="nav-link mobile-nav-link" href="/contatti">
+              <Link className={pathname == "/contatti" ? "nav-link mobile-nav-link active-link" : "nav-link mobile-nav-link"} href="/contatti">
                 <GoMail />
               </Link>
             </div>
             <Navbar.Collapse id="navbarScroll">
               <Nav className="me-auto my-2 my-lg-0 w-100 justify-content-end" style={{ maxHeight: "100px" }} navbarScroll>
-                <Link className="nav-link" href="/">
+                <Link className={pathname == "/" ? "nav-link active-link" : "nav-link"} href="/">
                   Home
                 </Link>
-                <Link className="nav-link" href="/staff">
+                <Link className={pathname == "/staff" ? "nav-link active-link" : "nav-link"} href="/staff">
                   Staff
                 </Link>
                 <NavDropdown title="Palinsesto" id="navbarScrollingDropdown">
@@ -62,7 +64,7 @@ export default function CustomNav() {
                     Replay
                   </Link>
                 </NavDropdown>
-                <Link className="nav-link" href="/contatti">
+                <Link className={pathname == "/contatti" ? "nav-link active-link" : "nav-link"} href="/contatti">
                   Contatti
                 </Link>
               </Nav>
