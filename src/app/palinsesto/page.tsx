@@ -1,7 +1,5 @@
 import { Calendar } from "../components/Calendar/Calendar";
 import palinsesto from "../../../public/palinsesto.json";
-import { eachDayOfInterval, format, getWeek } from "date-fns";
-import { it } from "date-fns/locale";
 
 export interface Programmazione {
   titolo: string;
