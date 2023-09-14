@@ -1,14 +1,19 @@
 "use client";
 import { useEffect, useState } from "react";
 import "./Calendar.scss";
-import bepalinsesto from "../../../../public/palinsesto.json";
-import { Spinner } from "react-bootstrap";
 
-export const Calendar = () => {
+import { Spinner } from "react-bootstrap";
+import { Programmazione } from "@/app/palinsesto/page";
+
+interface CalendarProps {
+  data: Programmazione[][];
+}
+
+export const Calendar = ({ data }: CalendarProps) => {
   const [hasTableBeenGenerated, setTableBeenGenerated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  const generateTableStructure = (hoursOfDay: number, daysOfWeek: number) => {
+  const generateTableStructure = (hoursOfDay: number, daysOfWeek: number): string => {
     let hours = "";
     for (let i = 0; i < hoursOfDay * 2; i++) {
       const isEven = i % 2 == 0;
@@ -25,9 +30,9 @@ export const Calendar = () => {
     return hours;
   };
 
-  const generateContent = async () => {
+  const generateContent = async (): Promise<void> => {
     setIsLoading(true);
-    const palinsesto = bepalinsesto.palinsesto;
+    const palinsesto = data;
     for (let d = 0; d < palinsesto.length; d++) {
       for (let el = 0; el < palinsesto[d].length; el++) {
         let startTime = parseInt(palinsesto[d][el].start.split(".")[0]);
