@@ -5,6 +5,7 @@ import Link from "next/link";
 import { BsInstagram, BsFacebook } from "react-icons/bs";
 import navbarbg from "../../../../public/assets/wave.svg";
 import "./CustomNav.scss";
+import { GoCalendar, GoHome, GoMail, GoPeople, GoReply } from "react-icons/go";
 
 export default function CustomNav() {
   return (
@@ -18,7 +19,7 @@ export default function CustomNav() {
           <Container fluid>
             <Navbar.Brand href="/">
               <Image src="/imgs/logo_splash_tr.png" alt="Radio Splash Logo" width={103} height={53} />
-              <div className="d-inline p-2 text-muted social-links">
+              <div className="d-none d-md-inline p-2 text-muted social-links">
                 <a href="https://fb.me/radiosplash" title="radiosplash su facebook" target="_blank">
                   <BsFacebook />
                 </a>
@@ -27,7 +28,23 @@ export default function CustomNav() {
                 </a>
               </div>
             </Navbar.Brand>
-            <div className="d-block d-md-none">ICONE MOBILE</div>
+            <div className="d-flex d-md-none">
+              <Link className="nav-link mobile-nav-link" href="/">
+                <GoHome />
+              </Link>
+              <Link className="nav-link mobile-nav-link" href="/staff">
+                <GoPeople />
+              </Link>
+              <Link className="nav-link mobile-nav-link" href="/palinsesto">
+                <GoCalendar />
+              </Link>
+              <Link className="nav-link mobile-nav-link" href="/replay">
+                <GoReply />
+              </Link>
+              <Link className="nav-link mobile-nav-link" href="/contatti">
+                <GoMail />
+              </Link>
+            </div>
             <Navbar.Collapse id="navbarScroll">
               <Nav className="me-auto my-2 my-lg-0 w-100 justify-content-end" style={{ maxHeight: "100px" }} navbarScroll>
                 <Link className="nav-link" href="/">
