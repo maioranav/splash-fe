@@ -3,43 +3,43 @@
     {
       "titolo": "Kaffeine",
       "artista": "Vincenzo Carcione",
-      "img": "/kaffeine/sfondokaffeine.png",
+      "img": "/newweb/podcastimgs/kaffeine.jpg",
       "sessioni": [
-        { "sessione": 1, "url": "/kaffeine/kaffeine01.mp3" },
-        { "sessione": 2, "url": "/kaffeine/kaffeine02.mp3" },
-        { "sessione": 3, "url": "/kaffeine/kaffeine03.mp3" },
-        { "sessione": 4, "url": "/kaffeine/kaffeine04.mp3" }
+        { "sessione": 1, "url": "/Kaffeine/Kaffeine01.mp3" },
+        { "sessione": 2, "url": "/Kaffeine/Kaffeine02.mp3" },
+        { "sessione": 3, "url": "/Kaffeine/Kaffeine03.mp3" },
+        { "sessione": 4, "url": "/Kaffeine/Kaffeine04.mp3" }
       ]
     },
     {
       "titolo": "Kaffeine On Stage",
       "artista": "Vincenzo Carcione",
-      "img": "/kaffeine/sfondokaffeine.png",
+      "img": "/newweb/podcastimgs/kaffeine.jpg",
       "sessioni": [
-        { "sessione": 1, "url": "/kaffeine/kaffeinestage01.mp3" },
-        { "sessione": 2, "url": "/kaffeine/kaffeinestage02.mp3" }
+        { "sessione": 1, "url": "/Kaffeine/KaffeineOnStage01.mp3" },
+        { "sessione": 2, "url": "/Kaffeine/KaffeineOnStage02.mp3" }
       ]
     },
     {
       "titolo": "Kocaine",
       "artista": "Vincenzo Carcione",
-      "img": "/kocaine/sfondokocaine.png",
+      "img": "/newweb/podcastimgs/kocaine.jpg",
       "sessioni": [
-        { "sessione": 1, "url": "/kocaine/kocaine01.mp3" },
-        { "sessione": 2, "url": "/kocaine/kocaine02.mp3" },
-        { "sessione": 3, "url": "/kocaine/kocaine03.mp3" },
-        { "sessione": 4, "url": "/kocaine/kocaine04.mp3" }
+        { "sessione": 1, "url": "/Kocaine/Kocaine01.mp3" },
+        { "sessione": 2, "url": "/Kocaine/Kocaine02.mp3" },
+        { "sessione": 3, "url": "/Kocaine/Kocaine03.mp3" },
+        { "sessione": 4, "url": "/Kocaine/Kocaine04.mp3" }
       ]
     },
     {
       "titolo": "Sabato da Greg",
       "artista": "Greg DJ",
-      "img": "/sabatodagreg/sfondosabatodagreg.png",
+      "img": "/newweb/podcastimgs/sabatodagreg.jpg",
       "sessioni": [
-        { "sessione": 1, "url": "/sabatodagreg/sabatodagreg01.mp3" },
-        { "sessione": 2, "url": "/sabatodagreg/sabatodagreg02.mp3" },
-        { "sessione": 3, "url": "/sabatodagreg/sabatodagreg03.mp3" },
-        { "sessione": 4, "url": "/sabatodagreg/sabatodagreg04.mp3" }
+        { "sessione": 1, "url": "/SabatodaGreg/SabatodaGreg01.mp3" },
+        { "sessione": 2, "url": "/SabatodaGreg/SabatodaGreg02.mp3" },
+        { "sessione": 3, "url": "/SabatodaGreg/SabatodaGreg03.mp3" },
+        { "sessione": 4, "url": "/SabatodaGreg/SabatodaGreg04.mp3" }
       ]
     },
     {
@@ -47,15 +47,15 @@
       "artista": "Andrea Corso",
       "img": "/houseselection/sfondohouseselection.png",
       "sessioni": [
-        { "sessione": 1, "url": "/houseselection/houseselection01.mp3" },
-        { "sessione": 2, "url": "/houseselection/houseselection02.mp3" }
+        { "sessione": 1, "url": "/HouseSelection/HouseSelection01.mp3" },
+        { "sessione": 2, "url": "/HouseSelection/HouseSelection02.mp3" }
       ]
     },
     {
       "titolo": "Vinyls",
       "artista": "Greg DJ",
       "img": "/vinyls/sfondovinyls.png",
-      "sessioni": [{ "sessione": 1, "url": "/vinyls/vinyls.mp3" }]
+      "sessioni": [{ "sessione": 1, "url": "/SabatodaGreg/Vinyls.mp3" }]
     },
     {
       "titolo": "Acid Rain",
