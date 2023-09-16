@@ -1,9 +1,9 @@
+import "./globals.scss";
+import type { Metadata } from "next";
 import { AudioPlayer } from "./components/AudioPlayer";
 import CustomFooter from "./components/CustomFooter/CustomFooter";
 import CustomNav from "./components/CustomNav/CustomNav";
 import GoTopButton from "./components/GoTopButton/GoTopButton";
-import "./globals.scss";
-import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Radio Splash | Play My Music!",
