@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import "./CoverArt.css";
-export const CoverArt = ({ nonce }: ICoverArt) => {
+export const CoverArt = ({ nonce, embed = false }: ICoverArt) => {
   const [cover, setCover] = useState("");
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export const CoverArt = ({ nonce }: ICoverArt) => {
   }, []);
 
   return (
-    <div className="col-3 m-0 p-0">
+    <div className={embed ? "d-block d-md-none cover-art-embed" : "col-md-6 col-xxl-3 m-0 p-0 d-none d-md-block"}>
       <img className="cover-art-img" src={"data:image/jpeg;base64," + cover} alt="Cover-Art" />
     </div>
   );
@@ -27,6 +27,7 @@ export const CoverArt = ({ nonce }: ICoverArt) => {
 
 interface ICoverArt {
   nonce: string;
+  embed?: boolean;
 }
 
 interface IOnAirCover {

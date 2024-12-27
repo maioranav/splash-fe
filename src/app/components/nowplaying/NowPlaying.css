@@ -5,6 +5,20 @@
   z-index: 0;
 }
 
+@media screen and (max-width: 768px) {
+  .dynamic-background {
+    justify-content: center;
+  }
+  .dynamic-background * {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .dynamic-background p {
+    scale: 0.8;
+  }
+}
+
 /* Contenuto sopra lo sfondo */
 .content {
   z-index: 2;
