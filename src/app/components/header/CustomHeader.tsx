@@ -1,7 +1,15 @@
-"use client";
 import "./CustomHeader.css";
+import { CustomNavLink } from "./CustomNavLink";
 
 export const CustomHeader = () => {
+  const routes = [
+    { path: "/", name: "Home" },
+    { path: "/tv", name: "TV" },
+    { path: "#", name: "Staff" },
+    { path: "#", name: "Palinsesto" },
+    { path: "#", name: "Contatti" },
+  ];
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -11,31 +19,9 @@ export const CustomHeader = () => {
           </a>
           <div className="collapse navbar-collapse w-100" id="navbarToggler">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex justify-content-end">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  TV
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Staff
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Palinsesto
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Contatti
-                </a>
-              </li>
+              {routes.map((route, i) => (
+                <CustomNavLink key={i} linkmeta={route} />
+              ))}
             </ul>
           </div>
         </div>
