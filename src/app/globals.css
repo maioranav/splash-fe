@@ -1,0 +1,10 @@
+:root {
+  --bs-primary: #005ae1;
+  --bs-primary-rgb: 000, 90, 225;
+  --bs-secondary: #313131;
+  --bs-secondary-rgb: 49, 49, 49;
+}
+
+* {
+  font-family: "Montserrat";
+}

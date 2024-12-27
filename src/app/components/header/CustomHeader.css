@@ -1,0 +1,23 @@
+.navbar-brand-image {
+  max-height: 90px;
+}
+
+.navbar-nav {
+  gap: 25px;
+}
+
+.nav-item {
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  color: var(--bs-primary);
+  text-transform: uppercase;
+}
+
+.nav-link.active {
+  color: var(--bs-light) !important;
+  background-color: var(--bs-primary);
+  font-weight: 600;
+}
