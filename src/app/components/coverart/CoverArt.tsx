@@ -1,8 +1,34 @@
+"use client";
+import { useEffect, useState } from "react";
 import "./CoverArt.css";
-export const CoverArt = () => {
+export const CoverArt = ({ nonce }: ICoverArt) => {
+  const [cover, setCover] = useState("");
+
+  useEffect(() => {
+    // opening a connection to the server to begin receiving events from it
+    const eventSource = new EventSource(process.env.NEXT_PUBLIC_BASE_API_URL + "/onair/cover?nonce=" + nonce);
+
+    // attaching a handler to receive message events
+    eventSource.onmessage = (event) => {
+      const { content } = JSON.parse(event.data) as IOnAirCover;
+      setCover(content);
+    };
+
+    // terminating the connection on component unmount
+    return () => eventSource.close();
+  }, []);
+
   return (
     <div className="col-3 m-0 p-0">
-      <img className="cover-art-img" src="https://www.radiosplash.it/air/OnAir.jpg" alt="Cover-Art" />
+      <img className="cover-art-img" src={"data:image/jpeg;base64," + cover} alt="Cover-Art" />
     </div>
   );
 };
+
+interface ICoverArt {
+  nonce: string;
+}
+
+interface IOnAirCover {
+  content: string;
+}

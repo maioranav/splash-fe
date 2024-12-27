@@ -1,5 +1,6 @@
 import "./NowPlaying.css";
-export const NowPlaying = () => {
+import { TitleComponent } from "./TitleComponent";
+export const NowPlaying = (props: INowPlaying) => {
   return (
     <div className="col-9 m-0 dynamic-background">
       <div className="content d-flex flex-column h-100 justify-content-center p-5">
@@ -7,8 +8,10 @@ export const NowPlaying = () => {
           <i className="bi bi-play-fill me-2 text-primary"></i>
           <span>Now Playing</span>
         </div>
-        <p className="my-2 mb-5 display-4">Odesza - A moment apart</p>
-        <audio src="https://ssl2.azotosolutions.com:1002/stream" controls />
+        <p className="my-2 mb-5 display-4">
+          <TitleComponent nonce={props.nonce} />
+        </p>
+        <audio src={process.env.NEXT_PUBLIC_BASE_AUDIO_STREAM} controls />
         <p className="mt-5 mb-2">Scarica l&apos;app di RadioSplash, portaci sempre con te!</p>
       </div>
       <div className="background bg1"></div>
@@ -17,3 +20,6 @@ export const NowPlaying = () => {
     </div>
   );
 };
+interface INowPlaying {
+  nonce: string;
+}
