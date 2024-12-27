@@ -10,7 +10,7 @@ export default function Home() {
           <NowPlaying />
           <CoverArt />
         </div>
-        <div className="container-fluid">
+        <div className="container-fluid p-0 m-0">
           <HomeShows />
         </div>
       </div>
