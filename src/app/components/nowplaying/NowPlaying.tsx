@@ -9,7 +9,7 @@ export const NowPlaying = (props: INowPlaying) => {
           <i className="bi bi-play-fill me-2 text-primary"></i>
           <span>Now Playing</span>
         </div>
-        <p className="my-2 mb-5 display-4">
+        <p className="my-2 mb-5 display-4 text-uppercase">
           <TitleComponent nonce={props.nonce} />
         </p>
         <audio src={process.env.NEXT_PUBLIC_BASE_AUDIO_STREAM} controls />
