@@ -2,9 +2,10 @@ import { CoverArt } from "./components/coverart/CoverArt";
 import { HomeShows } from "./components/homeshows/HomeShows";
 import { Maintenance } from "./components/maintenance/Maintenance";
 import { NowPlaying } from "./components/nowplaying/NowPlaying";
+import { NonceService } from "./utils/nonce.service";
 
 export default async function Home() {
-  const nonce = await getNonce();
+  const nonce = await NonceService.instance.getNonce();
   return (
     <>
       {nonce ? (
@@ -23,13 +24,3 @@ export default async function Home() {
     </>
   );
 }
-const getNonce = async () => {
-  try {
-    const req = await fetch(process.env.NEXT_PUBLIC_BASE_API_URL + "/main/title/FRONTEND SECRET NONCE");
-    const data = await req.json();
-    return data.data as string;
-  } catch (e) {
-    console.error("Error while fetching nonce", e);
-    return "";
-  }
-};
