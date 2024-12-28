@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
 import { CustomHeader } from "./components/header/CustomHeader";
 import { CustomFooter } from "./components/footer/CustomFooter";
+import { ScrollLogo } from "./components/header/ScrollLogo";
 
 const montserratSans = Montserrat({
   variable: "--font-montserrat-sans",
@@ -29,6 +30,7 @@ export default function RootLayout({
   return (
     <html lang="it">
       <body className={`${montserratSans.variable}`}>
+        <ScrollLogo />
         <header>
           <CustomHeader />
         </header>

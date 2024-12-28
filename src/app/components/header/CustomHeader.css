@@ -1,5 +1,6 @@
 .navbar-brand-image {
   max-height: 90px;
+  transition: all 0.3s ease;
 }
 
 .navbar-nav {
