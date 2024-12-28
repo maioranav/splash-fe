@@ -1,0 +1,19 @@
+.artist-card {
+  width: 100%;
+  max-width: 320px;
+  min-width: 200px;
+}
+
+.artist-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center;
+}
+
+.artist-card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
