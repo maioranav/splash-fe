@@ -1,5 +1,7 @@
 import { Spot } from "../components/spot/Spot";
+import { Stinger } from "../components/stinger/Stinger";
 import { VideoPlayer } from "../components/videoplayer/VideoPlayer";
+import { IStinger } from "../models/IStinger";
 
 export default function Tv() {
   const videoJsOptions = {
@@ -16,10 +18,19 @@ export default function Tv() {
     ],
   };
 
+  const stingerOptions: IStinger = {
+    title: "Un universo di Musica",
+    subtitle: "da ascoltare e da vedere",
+    url: "/imgs/pexels-pixabay-302871.jpg",
+  };
+
   return (
     <>
       <div className="container mt-5">
         <VideoPlayer options={videoJsOptions} />
+      </div>
+      <Stinger options={stingerOptions} />
+      <div className="container mt-5">
         <Spot />
       </div>
     </>
