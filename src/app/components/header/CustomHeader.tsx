@@ -5,9 +5,10 @@ export const CustomHeader = () => {
   const routes = [
     { path: "/", name: "Home" },
     { path: "/tv", name: "TV" },
-    { path: "#", name: "Staff" },
-    { path: "#", name: "Palinsesto" },
-    { path: "#", name: "Contatti" },
+    { path: "/staff", name: "Staff" },
+    { path: "/palinsesto", name: "Palinsesto" },
+    { path: "/replay", name: "Replay" },
+    { path: "/contatti", name: "Contatti" },
   ];
 
   return (

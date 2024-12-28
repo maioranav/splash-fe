@@ -1,3 +1,4 @@
+import { Spot } from "../components/spot/Spot";
 import { VideoPlayer } from "../components/videoplayer/VideoPlayer";
 
 export default function Tv() {
@@ -16,8 +17,11 @@ export default function Tv() {
   };
 
   return (
-    <div className="container mt-5">
-      <VideoPlayer options={videoJsOptions} />
-    </div>
+    <>
+      <div className="container mt-5">
+        <VideoPlayer options={videoJsOptions} />
+        <Spot />
+      </div>
+    </>
   );
 }
