@@ -6,7 +6,7 @@ export type IShow = {
   img: string;
   artista?: IStaff;
   appuntamenti: Array<{
-    giorno: string;
+    giorno: number;
     inizio: string;
     fine: string;
   }>;

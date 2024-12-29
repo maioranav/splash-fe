@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import "./HomeShows.css";
 import { IShow } from "@/app/models/IShow";
+import { WeekDayUtils } from "@/app/utils/weekday.service";
 
 export const HomeShows = (props: IHomeShows) => {
   const [shows, setShows] = useState<IShow[]>([]);
@@ -33,7 +34,7 @@ export const HomeShows = (props: IHomeShows) => {
                   <h4>{el.titolo}</h4>
                   {el.artista && <h5>{el.artista.nome}</h5>}
                   <h6>
-                    {el.appuntamenti[0].giorno} {el.appuntamenti[0].inizio} - {el.appuntamenti[0].fine}
+                    {WeekDayUtils.getWeekDayName(el.appuntamenti[0].giorno)} {el.appuntamenti[0].inizio} - {el.appuntamenti[0].fine}
                   </h6>
                 </div>
               </li>
