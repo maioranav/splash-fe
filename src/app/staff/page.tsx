@@ -8,7 +8,7 @@ export default async function Staff() {
   const stingerOptions = {
     url: "",
     title: "Il nostro staff al completo",
-    subtitle: "Seguici",
+    subtitle: "Seguici sui social",
   };
 
   return (
