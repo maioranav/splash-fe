@@ -37,7 +37,7 @@ header {
 
 .go-top-btn {
   position: fixed;
-  bottom: -50px;
+  bottom: 50px;
   right: -50px;
   padding: 8px 10px;
   font-size: 16px;
@@ -54,6 +54,13 @@ header {
 
 .go-top-btn i::before {
   rotate: 180deg !important;
+}
+
+@media screen and (max-width: 920px) {
+  .go-top-btn {
+    bottom: 100px;
+    scale: 1.2;
+  }
 }
 
 /* SCROLLBAR -------------------------------- */

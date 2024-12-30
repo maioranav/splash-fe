@@ -46,7 +46,7 @@ export const ScrollLogo = () => {
           type="button"
           title="Go Top!"
           className="go-top-btn"
-          style={position > 100 ? { opacity: 1, bottom: "50px", right: "50px" } : {}}
+          style={position > 100 ? { opacity: 1, right: "50px" } : {}}
         >
           <i className="bi bi-arrow-down-square-fill"></i>
         </button>
