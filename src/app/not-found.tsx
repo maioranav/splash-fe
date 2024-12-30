@@ -1,5 +1,20 @@
 "use client";
+
+import { redirect } from "next/dist/server/api-utils";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+
 export default function NotFound() {
+  const router = useRouter();
+  let timeout;
+
+  useEffect(() => {
+    setTimeout(() => {
+      router.push("/");
+    }, 3000);
+    return clearTimeout(timeout);
+  }, []);
+
   return (
     <div className="not-found-page">
       <span>404</span>
