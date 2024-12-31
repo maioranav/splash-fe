@@ -1,5 +1,5 @@
 .artist-card {
-  max-width: 310px;
+  width: 310px;
 }
 
 @media screen and (max-width: 1400px) {
@@ -10,19 +10,19 @@
 
 @media screen and (max-width: 1200px) {
   .artist-card {
-    max-width: 300px;
+    width: 300px;
   }
 }
 
 @media screen and (max-width: 991px) {
   .artist-card {
-    max-width: 340px;
+    width: 340px;
   }
 }
 
 @media screen and (max-width: 991px) {
   .artist-card {
-    max-width: 340px;
+    width: 340px;
   }
 }
 

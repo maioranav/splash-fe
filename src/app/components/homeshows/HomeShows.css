@@ -6,6 +6,7 @@
 }
 
 .home-shows-container li {
+  max-width: 350px;
   transition: all 0.3s ease;
   position: relative;
 }
