@@ -2,6 +2,7 @@
 import "./ContactForm.css";
 import { useState } from "react";
 import { NonceService } from "@/app/utils/nonce.service";
+import { useReCaptcha } from "next-recaptcha-v3";
 export const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -12,6 +13,7 @@ export const ContactForm = () => {
   const [hasError, setError] = useState<boolean>(false);
   const [isSuccess, setSuccess] = useState<boolean>(false);
   const [isLoading, setLoading] = useState<boolean>(false);
+  const { executeRecaptcha } = useReCaptcha();
 
   const handleChanges = (event: { target: { id: string; value: string } }) => {
     const { id, value } = event.target;
@@ -33,6 +35,7 @@ export const ContactForm = () => {
         headers: {
           "Content-Type": "application/json",
           "X-fe-nonce": await NonceService.instance.getNonce(),
+          "g-recaptcha-token": await executeRecaptcha("form_submit"),
         },
         body: JSON.stringify(formData),
       });

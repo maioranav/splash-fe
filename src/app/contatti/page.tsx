@@ -1,3 +1,4 @@
+import { ReCaptchaProvider } from "next-recaptcha-v3";
 import { ContactForm } from "../components/contactform/ContactForm";
 import { Contacts } from "../components/contacts/Contacts";
 import styles from "./page.module.css";
@@ -7,7 +8,9 @@ export default function Contatti() {
     <div className="container my-5">
       <div className="row">
         <div className="col-12 col-md-6">
-          <ContactForm />
+          <ReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}>
+            <ContactForm />
+          </ReCaptchaProvider>
           <Contacts />
         </div>
         <div className="col-12 col-md-6">
