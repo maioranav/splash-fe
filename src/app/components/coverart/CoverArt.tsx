@@ -1,12 +1,22 @@
 "use client";
 import { useEffect, useState } from "react";
 import "./CoverArt.css";
-export const CoverArt = ({ nonce, embed = false }: ICoverArt) => {
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { feNonceFetch } from "@/lib/public-features/nonceSlice";
+export const CoverArt = ({ embed = false }: ICoverArt) => {
   const [cover, setCover] = useState("");
+  const nonceState = useAppSelector((state) => state.nonce);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (nonceState?.nonce.length == 0 || nonceState?.status === "failed") {
+      dispatch(feNonceFetch());
+    }
+  }, []);
 
   useEffect(() => {
     // opening a connection to the server to begin receiving events from it
-    const eventSource = new EventSource(process.env.NEXT_PUBLIC_BASE_API_URL + "/onair/cover?nonce=" + nonce);
+    const eventSource = new EventSource(process.env.NEXT_PUBLIC_BASE_API_URL + "/onair/cover?nonce=" + nonceState?.nonce);
 
     // attaching a handler to receive message events
     eventSource.onmessage = (event) => {
@@ -16,7 +26,7 @@ export const CoverArt = ({ nonce, embed = false }: ICoverArt) => {
 
     // terminating the connection on component unmount
     return () => eventSource.close();
-  }, []);
+  }, [nonceState?.nonce]);
 
   // TODO: aggiungere fail-safe immagine
   return (
@@ -27,7 +37,6 @@ export const CoverArt = ({ nonce, embed = false }: ICoverArt) => {
 };
 
 interface ICoverArt {
-  nonce: string;
   embed?: boolean;
 }
 

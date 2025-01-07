@@ -7,6 +7,7 @@ import { CustomHeader } from "./components/header/CustomHeader";
 import { CustomFooter } from "./components/footer/CustomFooter";
 import { ScrollLogo } from "./components/header/ScrollLogo";
 import { ReCaptchaProvider } from "next-recaptcha-v3";
+import StoreProvider from "./StoreProvider";
 
 const montserratSans = Montserrat({
   variable: "--font-montserrat-sans",
@@ -32,15 +33,16 @@ export default function RootLayout({
     <html lang="it">
       <ReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}>
         <body className={`${montserratSans.variable}`}>
-          <ScrollLogo />
-          <header>
-            <CustomHeader />
-          </header>
-
-          <main>{children}</main>
-          <footer>
-            <CustomFooter />
-          </footer>
+          <StoreProvider>
+            <ScrollLogo />
+            <header>
+              <CustomHeader />
+            </header>
+            <main>{children}</main>
+            <footer>
+              <CustomFooter />
+            </footer>
+          </StoreProvider>
         </body>
       </ReCaptchaProvider>
     </html>

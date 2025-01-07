@@ -1,8 +1,9 @@
 "use client";
 import "./ContactForm.css";
-import { useState } from "react";
-import { NonceService } from "@/app/utils/nonce.service";
+import { useEffect, useState } from "react";
 import { useReCaptcha } from "next-recaptcha-v3";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { feNonceFetch } from "@/lib/public-features/nonceSlice";
 export const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -13,7 +14,13 @@ export const ContactForm = () => {
   const [hasError, setError] = useState<boolean>(false);
   const [isSuccess, setSuccess] = useState<boolean>(false);
   const [isLoading, setLoading] = useState<boolean>(false);
+  const nonceSlice = useAppSelector((state) => state.nonce);
+  const dispatch = useAppDispatch();
   const { executeRecaptcha } = useReCaptcha();
+
+  useEffect(() => {
+    if (!nonceSlice || (nonceSlice.status === "idle" && !nonceSlice.nonce)) dispatch(feNonceFetch());
+  }, []);
 
   const handleChanges = (event: { target: { id: string; value: string } }) => {
     const { id, value } = event.target;
@@ -30,11 +37,16 @@ export const ContactForm = () => {
     setSuccess(false);
 
     try {
+      if (!nonceSlice?.nonce) {
+        setError(true);
+        return;
+      }
+
       const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/mailer`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X-fe-nonce": await NonceService.instance.getNonce(),
+          "X-fe-nonce": nonceSlice.nonce,
           "g-recaptcha-token": await executeRecaptcha("form_submit"),
         },
         body: JSON.stringify(formData),

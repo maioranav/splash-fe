@@ -1,9 +1,24 @@
+"use client";
+
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { ArtistCard } from "../components/artistcard/ArtistCard";
 import { Stinger } from "../components/stinger/Stinger";
-import { StaffService } from "../utils/staff.service";
+import { useEffect } from "react";
+import { allStaffFetch } from "@/lib/public-features/staffSlice";
+import { feNonceFetch } from "@/lib/public-features/nonceSlice";
 
-export default async function Staff() {
-  const staff = await StaffService.instance.getAllStaff();
+export default function Staff() {
+  const staffSlice = useAppSelector((state) => state.staff);
+  const nonceSlice = useAppSelector((state) => state.nonce);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (nonceSlice?.status === "idle" && nonceSlice.nonce) dispatch(allStaffFetch(nonceSlice.nonce));
+  }, [nonceSlice]);
+
+  useEffect(() => {
+    if (!nonceSlice || (nonceSlice?.status == "idle" && !nonceSlice?.nonce)) dispatch(feNonceFetch());
+  }, []);
 
   const stingerOptions = {
     url: "",
@@ -17,9 +32,9 @@ export default async function Staff() {
         <Stinger options={stingerOptions} />
       </div>
       <div className="container my-5 d-flex justify-content-center gap-3 flex-wrap">
-        {staff.map((el, i) => (
-          <ArtistCard artist={el} key={`staff-${i}`} />
-        ))}
+        {staffSlice?.status === "idle" &&
+          staffSlice.staff.length > 0 &&
+          staffSlice.staff.map((el, i) => <ArtistCard artist={el} key={`staff-${i}`} />)}
       </div>
     </>
   );

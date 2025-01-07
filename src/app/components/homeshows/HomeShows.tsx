@@ -3,15 +3,27 @@ import React, { useEffect, useState } from "react";
 import "./HomeShows.css";
 import { IShow } from "@/app/models/IShow";
 import { WeekDayUtils } from "@/app/utils/weekday.service";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { feNonceFetch } from "@/lib/public-features/nonceSlice";
 
-export const HomeShows = (props: IHomeShows) => {
+export const HomeShows = () => {
   const [shows, setShows] = useState<IShow[]>([]);
 
+  const nonceState = useAppSelector((state) => state.nonce);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (nonceState?.nonce.length == 0 || nonceState?.status === "failed") {
+      dispatch(feNonceFetch());
+    }
+  }, []);
+
   const fetchShows = async () => {
+    if (!nonceState) return;
     const req = await fetch(process.env.NEXT_PUBLIC_BASE_API_URL + "/programmi/all", {
       headers: {
         "Content-Type": "application/json",
-        "X-fe-nonce": props.nonce,
+        "X-fe-nonce": nonceState.nonce,
       },
     });
     const data = await req.json();
@@ -20,7 +32,7 @@ export const HomeShows = (props: IHomeShows) => {
 
   useEffect(() => {
     fetchShows();
-  }, []);
+  }, [nonceState?.status]);
 
   return (
     <ul className="home-shows-container d-flex justify-content-between">
@@ -44,7 +56,3 @@ export const HomeShows = (props: IHomeShows) => {
     </ul>
   );
 };
-
-interface IHomeShows {
-  nonce: string;
-}
