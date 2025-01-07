@@ -19,6 +19,7 @@
     "react-redux": "^9.2.0",
     "redux-persist": "^6.0.0",
     "redux-persist-transform-encrypt": "^5.1.1",
+    "sass": "^1.83.1",
     "video.js": "^8.21.0"
   },
   "devDependencies": {

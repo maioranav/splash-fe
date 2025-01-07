@@ -1,5 +1,5 @@
 "use client";
-import "./ContactForm.css";
+import "./ContactForm.scss";
 import { useEffect, useState } from "react";
 import { useReCaptcha } from "next-recaptcha-v3";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";

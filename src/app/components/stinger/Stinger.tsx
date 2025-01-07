@@ -1,5 +1,5 @@
 import { IStinger } from "@/app/models/IStinger";
-import "./Stinger.css";
+import "./Stinger.scss";
 export const Stinger = ({ options }: IStingerProps) => {
   return (
     <div

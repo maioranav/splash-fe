@@ -1,25 +1,25 @@
 .spot-container {
   margin-block: 8rem;
-}
 
-.spot-container h2 {
-  background-color: var(--bs-secondary);
-  color: var(--bs-light);
-  padding: 24px 32px;
-  font-size: 48px;
-  margin-bottom: 0;
-  width: fit-content;
-}
+  h2 {
+    background-color: var(--bs-secondary);
+    color: var(--bs-light);
+    padding: 24px 32px;
+    font-size: 48px;
+    margin-bottom: 0;
+    width: fit-content;
+  }
 
-.spot-container h3 {
-  background-color: var(--bs-primary);
-  color: var(--bs-light);
-  text-transform: uppercase;
-  padding: 12px 32px;
-  font-size: 18px;
-  font-weight: 600;
-  margin-top: 0;
-  width: fit-content;
+  h3 {
+    background-color: var(--bs-primary);
+    color: var(--bs-light);
+    text-transform: uppercase;
+    padding: 12px 32px;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 0;
+    width: fit-content;
+  }
 }
 
 @media screen and (max-width: 768px) {

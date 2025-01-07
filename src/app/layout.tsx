@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./globals.css";
+import "./globals.scss";
 import { CustomHeader } from "./components/header/CustomHeader";
 import { CustomFooter } from "./components/footer/CustomFooter";
 import { ScrollLogo } from "./components/header/ScrollLogo";

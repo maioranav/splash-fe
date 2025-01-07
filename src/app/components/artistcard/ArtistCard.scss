@@ -1,0 +1,53 @@
+.artist-card {
+  width: 310px;
+
+  @media screen and (max-width: 1400px) {
+    max-width: 360px;
+  }
+
+  @media screen and (max-width: 1200px) {
+    width: 300px;
+  }
+
+  @media screen and (max-width: 991px) {
+    width: 340px;
+  }
+
+  img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+  }
+
+  .card-title {
+    text-align: center;
+  }
+
+  .card-text {
+    color: var(--bs-primary);
+  }
+
+  .artist-social-btns {
+    a {
+      margin: 4px;
+      background-color: rgba(var(--bs-secondary-rgb), 0.8);
+      color: var(--bs-light);
+      padding: 4px;
+      border-radius: 4px;
+      transition: all 0.3s ease-out;
+
+      &:hover {
+        background-color: var(--bs-primary);
+        color: var(--bs-light);
+      }
+    }
+  }
+}

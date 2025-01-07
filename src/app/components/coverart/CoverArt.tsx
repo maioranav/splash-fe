@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import "./CoverArt.css";
+import "./CoverArt.scss";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { feNonceFetch } from "@/lib/public-features/nonceSlice";
 export const CoverArt = ({ embed = false }: ICoverArt) => {

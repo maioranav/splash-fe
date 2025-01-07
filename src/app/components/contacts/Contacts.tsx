@@ -1,4 +1,4 @@
-import "./Contact.css";
+import "./Contact.scss";
 export const Contacts = () => {
   return (
     <div className="contacts-container d-flex my-4 flex-wrap">

@@ -1,4 +1,4 @@
-import "./Spot.css";
+import "./Spot.scss";
 
 export const Spot = () => {
   return (

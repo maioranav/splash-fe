@@ -1,5 +1,5 @@
 import { IStaff } from "@/app/models/IStaff";
-import "./ArtistCard.css";
+import "./ArtistCard.scss";
 
 export const ArtistCard = ({ artist }: IArtistCard) => {
   return (

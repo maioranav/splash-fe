@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import "./HomeShows.css";
+import "./HomeShows.scss";
 import { IShow } from "@/app/models/IShow";
 import { WeekDayUtils } from "@/app/utils/weekday.service";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";

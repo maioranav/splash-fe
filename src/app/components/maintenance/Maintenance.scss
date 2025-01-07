@@ -6,9 +6,10 @@
   align-items: center;
   min-height: 85dvh;
   background-position: center;
-}
-.maintenance-mode p:nth-child(1) {
-  color: var(--bs-danger);
-  font-size: 26px;
-  font-weight: 600;
+
+  p:nth-child(1) {
+    color: var(--bs-danger);
+    font-size: 26px;
+    font-weight: 600;
+  }
 }

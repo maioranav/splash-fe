@@ -1,4 +1,4 @@
-import "./CustomHeader.css";
+import "./CustomHeader.scss";
 import { CustomNavLink } from "./CustomNavLink";
 
 export const CustomHeader = () => {

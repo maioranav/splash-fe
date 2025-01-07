@@ -1,4 +1,4 @@
-import "./Maintenance.css";
+import "./Maintenance.scss";
 export const Maintenance = () => {
   return (
     <div className="maintenance-mode">

@@ -2,7 +2,7 @@
 
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { CoverArt } from "../coverart/CoverArt";
-import "./NowPlaying.css";
+import "./NowPlaying.scss";
 import { TitleComponent } from "./TitleComponent";
 import { useEffect } from "react";
 import { feNonceFetch } from "@/lib/public-features/nonceSlice";

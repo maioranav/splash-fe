@@ -1,6 +1,6 @@
 import { ContactForm } from "../components/contactform/ContactForm";
 import { Contacts } from "../components/contacts/Contacts";
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 
 export default function Contatti() {
   return (
