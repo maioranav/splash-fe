@@ -5,7 +5,6 @@ import storage from "redux-persist/lib/storage";
 import nonceSlice from "./public-features/nonceSlice";
 import staffSlice from "./public-features/staffSlice";
 import loginSlice from "./admin-features/loginSlice";
-import persistStore from "redux-persist/lib/persistStore";
 
 const persistConfig = {
   key: "root",
