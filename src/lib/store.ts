@@ -4,6 +4,8 @@ import { encryptTransform } from "redux-persist-transform-encrypt";
 import storage from "redux-persist/lib/storage";
 import nonceSlice from "./public-features/nonceSlice";
 import staffSlice from "./public-features/staffSlice";
+import loginSlice from "./admin-features/loginSlice";
+import persistStore from "redux-persist/lib/persistStore";
 
 const persistConfig = {
   key: "root",
@@ -13,15 +15,14 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  nonce: nonceSlice.reducer,
-  staff: staffSlice.reducer,
+  nonce: persistReducer(persistConfig, nonceSlice.reducer),
+  staff: persistReducer(persistConfig, staffSlice.reducer),
+  login: persistReducer(persistConfig, loginSlice.reducer),
 });
-
-const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const makeStore = () =>
   configureStore({
-    reducer: persistedReducer,
+    reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: {
