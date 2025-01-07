@@ -8,11 +8,11 @@ const initialState = {
   status: "idle",
 };
 
-export const myTokenFetch = createAsyncThunk("fetch-token", async ({ username, password }: loginDTO) => {
+export const myTokenFetch = createAsyncThunk("fetch-token", async ({ username, password, gRecaptcha }: loginDTO) => {
   try {
     const response = await fetch(process.env.NEXT_PUBLIC_BASE_API_URL + "/admin/login", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "g-recaptcha-token": gRecaptcha || "" },
       body: JSON.stringify({
         username,
         password,

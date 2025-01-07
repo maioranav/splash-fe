@@ -1,6 +1,7 @@
 "use client";
 import { myTokenFetch } from "@/lib/admin-features/loginSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { useReCaptcha } from "next-recaptcha-v3";
 import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -8,11 +9,12 @@ export const LoginForm = () => {
   const loginSlice = useAppSelector((store) => store.login);
   const [username, setUserName] = useState<string | undefined>();
   const [password, setPassword] = useState<string | undefined>();
+  const { executeRecaptcha } = useReCaptcha();
   const dispatch = useAppDispatch();
 
-  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (username && password) dispatch(myTokenFetch({ username, password }));
+    if (username && password) dispatch(myTokenFetch({ username, password, gRecaptcha: await executeRecaptcha("form_submit") }));
   };
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
