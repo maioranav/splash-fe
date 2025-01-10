@@ -5,6 +5,7 @@ import storage from "redux-persist/lib/storage";
 import nonceSlice from "./public-features/nonceSlice";
 import staffSlice from "./public-features/staffSlice";
 import loginSlice from "./admin-features/loginSlice";
+import showSlice from "./public-features/showSlice";
 
 const persistConfig = {
   key: "root",
@@ -16,6 +17,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   nonce: persistReducer(persistConfig, nonceSlice.reducer),
   staff: persistReducer(persistConfig, staffSlice.reducer),
+  shows: persistReducer(persistConfig, showSlice.reducer),
   login: persistReducer(persistConfig, loginSlice.reducer),
 });
 
