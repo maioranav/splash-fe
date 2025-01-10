@@ -2,3 +2,9 @@ header,
 footer {
   display: none !important;
 }
+
+.admin-navbar {
+  .navbar-collapse {
+    justify-content: flex-end;
+  }
+}

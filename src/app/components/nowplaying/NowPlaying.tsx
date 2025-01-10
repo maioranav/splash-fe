@@ -19,12 +19,6 @@ export const NowPlaying = () => {
   }, []);
 
   useEffect(() => {
-    if (nonceState?.nonce.length == 0 || nonceState?.status === "failed") {
-      dispatch(feNonceFetch());
-    }
-  }, []);
-
-  useEffect(() => {
     if (!nonceState?.nonce) return;
 
     // opening a connection to the server to begin receiving events from it
@@ -69,7 +63,7 @@ export const NowPlaying = () => {
   );
 };
 
-interface IOnAir {
+export interface IOnAir {
   title: string;
   cover: string;
 }

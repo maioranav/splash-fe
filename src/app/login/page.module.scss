@@ -1,4 +1,11 @@
 .loginForm {
   max-width: 300px;
   margin: 3rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  a {
+    margin: 3rem auto;
+  }
 }

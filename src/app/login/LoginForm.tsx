@@ -18,7 +18,6 @@ export const LoginForm = () => {
   };
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-    console.log(e);
     const { id, value } = e.target as HTMLInputElement;
     if (id === "username") {
       setUserName(value);

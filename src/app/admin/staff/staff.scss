@@ -1,0 +1,36 @@
+.admin-staff-list {
+  table {
+    border-radius: 16px;
+
+    thead {
+      border-radius: 16px;
+    }
+
+    th[scope="col"] {
+      background-color: var(--bs-primary);
+      color: var(--bs-light);
+      text-align: center;
+
+      &:first-child {
+        border-top-left-radius: 16px;
+      }
+
+      &:last-child {
+        border-top-right-radius: 16px;
+      }
+    }
+
+    td {
+      place-content: center;
+      text-align: center;
+    }
+  }
+
+  .staff-list-img {
+    max-height: 100px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 12px;
+  }
+}
