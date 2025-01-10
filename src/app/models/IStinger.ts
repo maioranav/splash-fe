@@ -1,5 +1,5 @@
 export type IStinger = {
-  url: string;
+  url?: string;
   title: string;
   subtitle: string;
 };
