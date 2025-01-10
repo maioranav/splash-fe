@@ -14,12 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: OCI
 
-    env:
-      NEXT_PUBLIC_RECAPTCHA_SITE_KEY: ${{ secrets.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}}
-      NEXT_PUBLIC_REDUX_SECRET: ${{ secrets.NEXT_PUBLIC_REDUX_SECRET}}
-      NEXT_PUBLIC_BASE_API_URL: ${{ vars.NEXT_PUBLIC_BASE_API_URL}}
-      NEXT_PUBLIC_BASE_AUDIO_STREAM: ${{ vars.NEXT_PUBLIC_BASE_AUDIO_STREAM}}
-      NEXT_PUBLIC_BASE_VIDEO_STREAM: ${{ vars.NEXT_PUBLIC_BASE_VIDEO_STREAM}}
     outputs:
       version: ${{ steps.version.outputs.version }}
 
@@ -46,6 +40,12 @@ jobs:
 
       # Step 5: Build e push dell'immagine Docker
       - name: Build and push Docker image
+        env:
+          NEXT_PUBLIC_RECAPTCHA_SITE_KEY: ${{ secrets.NEXT_PUBLIC_RECAPTCHA_SITE_KEY }}
+          NEXT_PUBLIC_REDUX_SECRET: ${{ secrets.NEXT_PUBLIC_REDUX_SECRET }}
+          NEXT_PUBLIC_BASE_API_URL: ${{ secrets.NEXT_PUBLIC_BASE_API_URL }}
+          NEXT_PUBLIC_BASE_AUDIO_STREAM: ${{ secrets.NEXT_PUBLIC_BASE_AUDIO_STREAM }}
+          NEXT_PUBLIC_BASE_VIDEO_STREAM: ${{ secrets.NEXT_PUBLIC_BASE_VIDEO_STREAM }}
         run: |
           docker build -t ${{ secrets.OCR_REGISTRY }}/${{ secrets.OCR_TENANT }}/splash-fe:${{ steps.version.outputs.version }} .
           docker push ${{ secrets.OCR_REGISTRY }}/${{ secrets.OCR_TENANT }}/splash-fe:${{ steps.version.outputs.version }}
