@@ -1,0 +1,75 @@
+{
+  "palinsesto": [
+    [
+      { "titolo": "Tendance", "start": "00.00", "end": "02.00" },
+      { "titolo": "Subway", "start": "02.00", "end": "03.00", "artista": "Dave Scott" },
+      { "titolo": "Uno per uno", "start": "06.00", "end": "10.00" },
+      { "titolo": "Easy Spy", "start": "10.00", "end": "12.00", "artista": "Luca Carcassi" },
+      { "titolo": "MusicBox", "start": "14.00", "end": "15.00" },
+      { "titolo": "Splash 40", "start": "15.00", "end": "16.00" },
+      { "titolo": "Bollicine", "start": "17.00", "end": "19.00", "artista": "Giuseppe Valdes" },
+      { "titolo": "Kaffeine", "start": "22.00", "end": "23.00", "artista": "Vincenzo Carcione" }
+    ],
+    [
+      { "titolo": "Acid Rain", "start": "00.00", "end": "01.00", "artista": "Davide Nastasi" },
+      { "titolo": "Splash Notte", "start": "01.00", "end": "06.00" },
+      { "titolo": "Uno per uno", "start": "06.00", "end": "10.00" },
+      { "titolo": "Easy Spy", "start": "10.00", "end": "12.00", "artista": "Luca Carcassi" },
+      { "titolo": "MusicBox", "start": "14.00", "end": "15.00" },
+      { "titolo": "Splash 40", "start": "15.00", "end": "16.00" },
+      { "titolo": "Bollicine", "start": "17.00", "end": "19.00", "artista": "Giuseppe Valdes" },
+      { "titolo": "Kaffeine", "start": "22.00", "end": "23.00", "artista": "Vincenzo Carcione" }
+    ],
+    [
+      { "titolo": "Vinyls", "start": "00.00", "end": "01.00", "artista": "Greg DJ" },
+      { "titolo": "Splash Notte", "start": "01.00", "end": "06.00" },
+      { "titolo": "Uno per uno", "start": "06.00", "end": "10.00" },
+      { "titolo": "Easy Spy", "start": "10.00", "end": "12.00", "artista": "Luca Carcassi" },
+      { "titolo": "MusicBox", "start": "14.00", "end": "15.00" },
+      { "titolo": "Splash 40", "start": "15.00", "end": "16.00" },
+      { "titolo": "Bollicine", "start": "17.00", "end": "19.00", "artista": "Giuseppe Valdes" },
+      { "titolo": "Kocaine", "start": "22.00", "end": "00.00", "artista": "Vincenzo Carcione" }
+    ],
+    [
+      { "titolo": "Splash Notte", "start": "01.00", "end": "06.00" },
+      { "titolo": "Uno per uno", "start": "06.00", "end": "10.00" },
+      { "titolo": "Easy Spy", "start": "10.00", "end": "12.00", "artista": "Luca Carcassi" },
+      { "titolo": "Splash 40", "start": "15.00", "end": "16.00" },
+      { "titolo": "Bollicine", "start": "17.00", "end": "19.00", "artista": "Giuseppe Valdes" },
+      { "titolo": "Vinyls", "start": "19.00", "end": "19.30", "artista": "Greg DJ" },
+      { "titolo": "Afterlife", "start": "21.00", "end": "22.00", "artista": "Peter DJ" },
+      { "titolo": "Kaffeine", "start": "22.00", "end": "00.00", "artista": "Vincenzo Carcione" }
+    ],
+    [
+      { "titolo": "Groovin", "start": "00.00", "end": "01.00", "artista": "Enzo C." },
+      { "titolo": "Splash Notte", "start": "01.00", "end": "06.00" },
+      { "titolo": "Uno per uno", "start": "06.00", "end": "10.00" },
+      { "titolo": "Easy Spy", "start": "10.00", "end": "12.00", "artista": "Luca Carcassi" },
+      { "titolo": "Kaffeine", "start": "14.00", "end": "17.00", "artista": "Vincenzo Carcione" },
+      { "titolo": "Bollicine", "start": "17.00", "end": "19.00", "artista": "Giuseppe Valdes" },
+      { "titolo": "Vinyls", "start": "19.00", "end": "19.30", "artista": "Greg DJ" },
+      { "titolo": "Kocaine", "start": "22.00", "end": "00.00", "artista": "Vincenzo Carcione" }
+    ],
+    [
+      { "titolo": "Tendance", "start": "00.00", "end": "02.00" },
+      { "titolo": "Forbidden House", "start": "02.00", "end": "03.00", "artista": "Giuseppe Mondo" },
+      { "titolo": "Splash Notte", "start": "04.00", "end": "06.00" },
+      { "titolo": "Uno per uno", "start": "06.00", "end": "10.00" },
+      { "titolo": "House Selection", "start": "14.00", "end": "15.00", "artista": "Andrea Corso" },
+      { "titolo": "Sabato da Greg", "start": "15.00", "end": "18.00", "artista": "Greg DJ" },
+      { "titolo": "Kocaine", "start": "18.00", "end": "20.00", "artista": "Vincenzo Carcione" },
+      { "titolo": "Splash 40", "start": "20.00", "end": "21.00" },
+      { "titolo": "Kaffeine", "start": "22.00", "end": "00.00", "artista": "Vincenzo Carcione" }
+    ],
+    [
+      { "titolo": "Sabato da Greg", "start": "00.00", "end": "03.00", "artista": "Greg DJ" },
+      { "titolo": "Tendance", "start": "03.00", "end": "05.00" },
+      { "titolo": "Uno x Uno", "start": "06.00", "end": "08.00" },
+      { "titolo": "Domenica Italiana", "start": "08.00", "end": "10.00" },
+      { "titolo": "Sabato da Greg", "start": "14.00", "end": "17.00", "artista": "Greg DJ" },
+      { "titolo": "Splash 40", "start": "17.00", "end": "19.30" },
+      { "titolo": "Kaffeine", "start": "22.00", "end": "23.00", "artista": "Vincenzo Carcione" },
+      { "titolo": "Miami House", "start": "23.00", "end": "00.00", "artista": "Enzo C." }
+    ]
+  ]
+}
