@@ -1,0 +1,15 @@
+.maintenance-mode {
+  background-image: url("/imgs/pexels-pixabay-164746.jpg");
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 85dvh;
+  background-position: center;
+
+  p:nth-child(1) {
+    color: var(--bs-danger);
+    font-size: 26px;
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,12 @@
+.cover-art-img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center;
+}
+.cover-art-embed {
+  z-index: 3;
+  scale: 0.7;
+  min-width: 120px;
+  max-width: 400px;
+}

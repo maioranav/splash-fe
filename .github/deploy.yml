@@ -1,0 +1,74 @@
+name: Deploy to Oracle Cloud Kubernetes
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: OCI
+
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+
+    steps:
+      # Step 1: Checkout il codice
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Configura Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20" # Sostituisci con la tua versione
+
+      # Step 3: Estrai versione da package.json
+      - name: Get version from package.json
+        id: version
+        run: |
+          echo ::set-output name=version::$(node -p "require('./package.json').version")
+
+      # Step 4: Login al registro di Oracle
+      - name: Log in to Oracle Container Registry
+        run: echo "${{ secrets.OCR_PASSWORD }}" | docker login ${{ secrets.OCR_REGISTRY }} -u ${{ secrets.OCR_USERNAME }} --password-stdin
+
+      # Step 5: Build e push dell'immagine Docker
+      - name: Build and push Docker image
+        run: |
+          docker build -t ${{ secrets.OCR_REGISTRY }}/${{ secrets.OCR_TENANT }}/splash-fe:${{ steps.version.outputs.version }} .
+          docker push ${{ secrets.OCR_REGISTRY }}/${{ secrets.OCR_TENANT }}/splash-fe:${{ steps.version.outputs.version }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    environment: OCI
+    needs: build
+
+    env:
+      OCI_CLI_USER: ${{ secrets.OCI_CLI_USER }}
+      OCI_CLI_TENANCY: ${{ secrets.OCI_CLI_TENANCY }}
+      OCI_CLI_FINGERPRINT: ${{ secrets.OCI_CLI_FINGERPRINT }}
+      OCI_CLI_KEY_CONTENT: ${{ secrets.OCI_CLI_KEY_CONTENT }}
+      OCI_CLI_REGION: ${{ secrets.OCI_CLI_REGION }}
+      VERSION: ${{ needs.build.outputs.version }}
+    steps:
+      # Step 6: Configure K8s on OCI
+      - name: Configure Kubectl
+        uses: oracle-actions/configure-kubectl-oke@v1.5.0
+        id: test-configure-kubectl-oke-action
+        with:
+          cluster: ${{ secrets.OKE_CLUSTER_OCID }}
+
+      - name: Run Kubectl
+        run: kubectl get nodes -A
+
+      # Step 7: Deploy su Kubernetes
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl set image deployment/splash-fe splash-fe=${{ secrets.OCR_REGISTRY }}/${{ secrets.OCR_TENANT }}/splash-fe:${{ env.VERSION }} -n splash
+          kubectl rollout status deployment/splash-fe -n splash

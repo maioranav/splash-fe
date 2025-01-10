@@ -1,0 +1,41 @@
+.stinger {
+  background: url("/imgs/bg_tv_bottom.jpg");
+  background-position: center;
+  background-size: cover;
+  padding: 0;
+  height: 60dvh;
+  margin-block: 6rem;
+
+  h2 {
+    background-color: var(--bs-secondary);
+    color: var(--bs-light);
+    padding: 24px 32px;
+    font-size: 48px;
+    margin-bottom: 0;
+    width: fit-content;
+    transform: translateY(30px);
+  }
+
+  h3 {
+    background-color: var(--bs-primary);
+    color: var(--bs-light);
+    text-transform: uppercase;
+    padding: 12px 32px;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 0;
+    width: fit-content;
+    transform: translateY(30px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .stinger h2 {
+    padding: 18px 24px;
+    font-size: 24px;
+  }
+  .stinger h3 {
+    font-size: 14px;
+    padding: 12px 24px;
+  }
+}

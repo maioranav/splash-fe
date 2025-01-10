@@ -1,0 +1,14 @@
+.contacts-container {
+  gap: 8px;
+
+  > div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  i {
+    font-size: 3rem;
+    color: var(--bs-primary);
+  }
+}

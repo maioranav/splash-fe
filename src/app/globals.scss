@@ -1,41 +1,84 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-@import "./branding.scss";
-@import "~bootstrap/scss/bootstrap";
-@import "mobilecalendar";
-@import "./replay/podcast";
-
-.row {
-  --bs-gutter-x: unset !important;
-  --bs-gutter-y: unset !important;
+:root {
+  --bs-primary: #005ae1;
+  --bs-primary-rgb: 000, 90, 225;
+  --bs-secondary: #313131;
+  --bs-secondary-rgb: 49, 49, 49;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-div,
-span {
-  user-select: none;
-  cursor: default;
+* {
+  font-family: "Montserrat";
 }
 
-body {
-  position: relative;
+.not-found-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50dvh;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--bs-primary);
+
+  span:first-child {
+    font-size: 28px;
+    font-weight: 600;
+  }
+
+  span:last-child {
+    font-size: 20px;
+    font-weight: 400;
+  }
 }
 
-.minvh100 {
-  min-height: 100dvh;
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
-.hidden {
-  visibility: hidden;
+.go-top-btn {
+  position: fixed;
+  bottom: 50px;
+  right: -50px;
+  padding: 8px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  color: var(--bs-light);
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.3s ease-out;
+  z-index: 12;
+  background-color: var(--bs-secondary);
+  scale: 1.5;
+
+  i::before {
+    rotate: 180deg !important;
+  }
+
+  @media screen and (max-width: 920px) {
+    bottom: 100px;
+    scale: 1.2;
+  }
 }
 
-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+/* SCROLLBAR -------------------------------- */
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--bs-secondary);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--bs-primary);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bs-primary);
 }

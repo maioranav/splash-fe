@@ -1,0 +1,87 @@
+/* Contenitore principale */
+.dynamic-background {
+  position: relative;
+  display: flex;
+  z-index: 0;
+
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+
+    * {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    p {
+      scale: 0.8;
+    }
+  }
+
+  /* Contenuto sopra lo sfondo */
+  .content {
+    z-index: 2;
+    color: var(--bs-light);
+  }
+
+  /* Sfondo animato */
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: fade 9s infinite;
+    filter: brightness(0.3);
+    z-index: 1; /* Dietro al contenuto */
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--bs-primary);
+      opacity: 0.6;
+      mix-blend-mode: overlay;
+      -webkit-backdrop-filter: blur(26px);
+      backdrop-filter: blur(26px);
+      z-index: 1;
+    }
+  }
+
+  .bg1 {
+    background-image: url("/imgs/pexels-pixabay-164746.jpg");
+    animation-delay: 0s;
+  }
+
+  .bg2 {
+    background-image: url("/imgs/pexels-pixabay-270288.jpg");
+    animation-delay: 3s;
+  }
+
+  .bg3 {
+    background-image: url("/imgs/pexels-pixabay-302871.jpg");
+    animation-delay: 6s;
+  }
+}
+
+/* Animazione */
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  33% {
+    opacity: 1;
+  }
+  66% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
