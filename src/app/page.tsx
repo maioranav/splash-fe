@@ -1,4 +1,3 @@
-import { CoverArt } from "./components/coverart/CoverArt";
 import { HomeShows } from "./components/homeshows/HomeShows";
 import { NowPlaying } from "./components/nowplaying/NowPlaying";
 
