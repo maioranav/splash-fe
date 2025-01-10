@@ -19,6 +19,7 @@ jobs:
       NEXT_PUBLIC_BASE_API_URL: ${{ secrets.NEXT_PUBLIC_BASE_API_URL }}
       NEXT_PUBLIC_BASE_AUDIO_STREAM: ${{ secrets.NEXT_PUBLIC_BASE_AUDIO_STREAM }}
       NEXT_PUBLIC_BASE_VIDEO_STREAM: ${{ secrets.NEXT_PUBLIC_BASE_VIDEO_STREAM }}
+      NEXT_PUBLIC_BASE_PODCAST_URL: ${{ secrets.NEXT_PUBLIC_BASE_PODCAST_URL }}
 
     outputs:
       version: ${{ steps.version.outputs.version }}
@@ -51,6 +52,7 @@ jobs:
             --build-arg NEXT_PUBLIC_RECAPTCHA_SITE_KEY=${{ env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY }} \
             --build-arg NEXT_PUBLIC_REDUX_SECRET=${{ env.NEXT_PUBLIC_REDUX_SECRET }} \
             --build-arg NEXT_PUBLIC_BASE_API_URL=${{ env.NEXT_PUBLIC_BASE_API_URL }} \
+            --build-arg NEXT_PUBLIC_BASE_PODCAST_URL=${{ env.NEXT_PUBLIC_BASE_PODCAST_URL }} \
             --build-arg NEXT_PUBLIC_BASE_AUDIO_STREAM=${{ env.NEXT_PUBLIC_BASE_AUDIO_STREAM }} \
             --build-arg NEXT_PUBLIC_BASE_VIDEO_STREAM=${{ env.NEXT_PUBLIC_BASE_VIDEO_STREAM }} \
             -t ${{ secrets.OCR_REGISTRY }}/${{ secrets.OCR_TENANT }}/splash-fe:${{ steps.version.outputs.version }} .
