@@ -5,28 +5,31 @@ import { useEffect, useState } from "react";
 import { feNonceFetch } from "@/lib/public-features/nonceSlice";
 import { IOnAir } from "../components/nowplaying/NowPlaying";
 import { allStaffFetch } from "@/lib/public-features/staffSlice";
+import { allShowsFetch } from "@/lib/public-features/showSlice";
 
 export default function AdminPage() {
-  const nonceState = useAppSelector((state) => state.nonce);
-  const staffSlice = useAppSelector((state) => state.staff);
+  const globalState = useAppSelector((state) => state);
   const [title, setTitle] = useState("");
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (nonceState?.nonce.length == 0 || nonceState?.status === "failed") {
+    if (globalState?.nonce.nonce.length == 0 || globalState?.nonce.status === "failed") {
       dispatch(feNonceFetch());
     }
   }, []);
 
   useEffect(() => {
-    if (nonceState?.status === "idle" && nonceState.nonce) dispatch(allStaffFetch(nonceState.nonce));
-  }, [nonceState]);
+    if (globalState?.nonce.status === "idle" && globalState?.nonce.nonce) {
+      dispatch(allStaffFetch(globalState?.nonce.nonce));
+      dispatch(allShowsFetch(globalState?.nonce.nonce));
+    }
+  }, [globalState?.nonce]);
 
   useEffect(() => {
-    if (!nonceState?.nonce) return;
+    if (!globalState?.nonce.nonce) return;
 
     // opening a connection to the server to begin receiving events from it
-    const eventSource = new EventSource(process.env.NEXT_PUBLIC_BASE_API_URL + "/onair/?nonce=" + nonceState?.nonce);
+    const eventSource = new EventSource(process.env.NEXT_PUBLIC_BASE_API_URL + "/onair/?nonce=" + globalState?.nonce.nonce);
 
     // attaching a handler to receive message events
     eventSource.onmessage = (event) => {
@@ -36,7 +39,7 @@ export default function AdminPage() {
 
     // terminating the connection on component unmount
     return () => eventSource.close();
-  }, [nonceState?.nonce]);
+  }, [globalState?.nonce.nonce]);
 
   return (
     <div className="container">
@@ -46,7 +49,7 @@ export default function AdminPage() {
           <div className="card" style={{ minWidth: "20rem" }}>
             <div className="card-body d-flex flex-column align-items-center">
               <h4>Programmi Attivi</h4>
-              <p className="display-3">1</p>
+              <p className="display-3">{globalState?.shows.shows.length}</p>
             </div>
           </div>
           <div className="card" style={{ minWidth: "20rem" }}>
@@ -58,7 +61,7 @@ export default function AdminPage() {
           <div className="card" style={{ minWidth: "20rem" }}>
             <div className="card-body d-flex flex-column align-items-center">
               <h4>Staff attivi in elenco</h4>
-              <p className="display-3">{staffSlice.staff.length}</p>
+              <p className="display-3">{globalState?.staff.staff.length}</p>
             </div>
           </div>
         </div>

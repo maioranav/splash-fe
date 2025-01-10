@@ -5,6 +5,7 @@ import { allStaffFetch } from "@/lib/public-features/staffSlice";
 import { useEffect } from "react";
 import "./staff.scss";
 import { Stinger } from "@/app/components/stinger/Stinger";
+import { redirect } from "next/navigation";
 
 export default function AdminStaff() {
   const staffSlice = useAppSelector((state) => state.staff);
@@ -26,7 +27,7 @@ export default function AdminStaff() {
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Img</th>
+            <th scope="col">Foto</th>
             <th scope="col">Nome</th>
             <th scope="col">Ruolo</th>
             <th scope="col">Act.Shows</th>
@@ -46,7 +47,7 @@ export default function AdminStaff() {
                 <td>{el.ruolo}</td>
                 <td>{el.programmi?.length || 0}</td>
                 <td>
-                  <button type="button" className="btn btn-primary" disabled>
+                  <button type="button" className="btn btn-primary" onClick={() => redirect("/admin/staff/" + el.id)}>
                     Modifica
                   </button>
                 </td>

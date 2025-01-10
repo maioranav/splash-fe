@@ -1,7 +1,7 @@
 {
   "name": "splash-fe",
-  "version": "0.0.10",
-  "private": true,
+  "version": "0.0.11",
+  "private": false,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
