@@ -8,7 +8,7 @@ ARG NEXT_PUBLIC_BASE_API_URL
 ARG NEXT_PUBLIC_BASE_AUDIO_STREAM
 ARG NEXT_PUBLIC_BASE_VIDEO_STREAM
 
-# Imposta le variabili di ambiente (disponibili al runtime)
+# Imposta le variabili di ambiente (disponibili durante la build)
 ENV NEXT_PUBLIC_RECAPTCHA_SITE_KEY=${NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
 ENV NEXT_PUBLIC_REDUX_SECRET=${NEXT_PUBLIC_REDUX_SECRET}
 ENV NEXT_PUBLIC_BASE_API_URL=${NEXT_PUBLIC_BASE_API_URL}
@@ -20,6 +20,8 @@ WORKDIR /app
 
 # Copia i file package.json e package-lock.json
 COPY package*.json ./
+
+RUN echo "NEXT_PUBLIC_BASE_API_URL=$NEXT_PUBLIC_BASE_API_URL"
 
 # Installa le dipendenze
 RUN npm install --legacy-peer-deps
@@ -44,6 +46,13 @@ COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next ./.next
+
+# Imposta le variabili di ambiente (disponibili al runtime)
+ENV NEXT_PUBLIC_RECAPTCHA_SITE_KEY=${NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+ENV NEXT_PUBLIC_REDUX_SECRET=${NEXT_PUBLIC_REDUX_SECRET}
+ENV NEXT_PUBLIC_BASE_API_URL=${NEXT_PUBLIC_BASE_API_URL}
+ENV NEXT_PUBLIC_BASE_AUDIO_STREAM=${NEXT_PUBLIC_BASE_AUDIO_STREAM}
+ENV NEXT_PUBLIC_BASE_VIDEO_STREAM=${NEXT_PUBLIC_BASE_VIDEO_STREAM}
 
 # Espone la porta 3000
 EXPOSE 3000
