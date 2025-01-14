@@ -3,7 +3,8 @@ name: Deploy to Oracle Cloud Kubernetes
 on:
   push:
     branches:
-      - main
+      #- main
+      - deprecated
 
 permissions:
   contents: read
