@@ -21,7 +21,25 @@ export default function AdminStaff() {
   }, []);
 
   return (
-    <div className="container admin-staff-list">
+    <div className="container admin-staff-list position-relative">
+      <button
+        type="button"
+        id="refresh-staff"
+        onClick={() => dispatch(allStaffFetch(nonceSlice.nonce))}
+        className="btn btn-primary-refresh position-absolute"
+        title="Aggiungi Staff"
+      >
+        <i className="bi bi-arrow-clockwise"></i>
+      </button>
+      <button
+        type="button"
+        id="add-staff"
+        className="btn btn-primary position-absolute"
+        onClick={() => redirect("/admin/staff/new")}
+        title="Aggiungi Staff"
+      >
+        <i className="bi bi-plus"></i>
+      </button>
       <Stinger options={{ title: "Staff", subtitle: "" }} />
       <table className="table my-5">
         <thead>
@@ -41,7 +59,7 @@ export default function AdminStaff() {
               <tr key={el.id}>
                 <th scope="row">{i + 1}</th>
                 <td>
-                  <img src={process.env.NEXT_PUBLIC_BASE_API_URL + "/uploads/" + el.img} alt={el.nome} className="staff-list-img" />
+                  {el.img && <img src={process.env.NEXT_PUBLIC_BASE_API_URL + "/uploads/" + el.img} alt={el.nome} className="staff-list-img" />}
                 </td>
                 <td>{el.nome}</td>
                 <td>{el.ruolo}</td>

@@ -4,9 +4,10 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./admin.scss";
 import { redirect } from "next/navigation";
-import { useAppSelector } from "@/lib/hooks";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { useEffect } from "react";
 import { CustomNavLink } from "../components/header/CustomNavLink";
+import { cleanToken } from "@/lib/admin-features/loginSlice";
 
 export default function AdminLayout({
   children,
@@ -14,6 +15,7 @@ export default function AdminLayout({
   children: React.ReactNode;
 }>) {
   const login = useAppSelector((state) => state.login);
+  const dispatch = useAppDispatch();
   const routes = [
     { path: "/admin", name: "Dashboard", icon: "house-door" },
     { path: "/admin/staff", name: "Staff", icon: "people" },
@@ -22,8 +24,13 @@ export default function AdminLayout({
   ];
 
   useEffect(() => {
-    if (!login.token) redirect("/login");
+    if (!login?.token) redirect("/login");
   }, []);
+
+  const handleLogout = () => {
+    dispatch(cleanToken());
+    redirect("/login");
+  };
 
   return (
     <>
@@ -40,6 +47,11 @@ export default function AdminLayout({
               {routes.map((route, i) => (
                 <CustomNavLink key={i} linkmeta={route} />
               ))}
+              <li className="nav-item">
+                <button type="button" className="nav-link" title="Logout" onClick={handleLogout}>
+                  <i className="bi bi-door-open" />
+                </button>
+              </li>
             </ul>
           </div>
         </div>
