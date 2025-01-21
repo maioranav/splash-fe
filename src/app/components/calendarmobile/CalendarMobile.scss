@@ -1,2 +1,43 @@
 .calendar-mobile {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+
+  .giorno-settimana {
+    background-color: var(--bs-primary);
+    color: var(--bs-light);
+    padding: 8px;
+    max-width: 200px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin-block: 8px;
+
+      .titolo {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      .artista,
+      .orario {
+        margin-left: 24px;
+      }
+
+      .artista {
+        font-size: 0.8rem;
+      }
+    }
+
+    .programma-closed {
+      display: none;
+    }
+  }
 }
