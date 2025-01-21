@@ -3,6 +3,10 @@
   flex-direction: column;
   margin-top: 3rem;
 
+  @media screen and (min-width: 990px) {
+    display: none;
+  }
+
   .giorno-settimana {
     background-color: var(--bs-primary);
     color: var(--bs-light);
