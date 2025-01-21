@@ -1,0 +1,9 @@
+.calendarblock {
+  margin-top: 3rem;
+  margin-bottom: 8rem;
+
+  @media screen and (max-width: 991px) {
+    display: none;
+  }
+}
+/*row my-5 d-none d-md-block*/
