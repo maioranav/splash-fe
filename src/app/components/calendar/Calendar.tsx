@@ -1,17 +1,13 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./Calendar.scss";
-
-import { Programmazione } from "../../palinsesto/page";
+import { IPalinsesto } from "@/app/models/IShow";
 
 interface CalendarProps {
-  data: Programmazione[][];
+  palinsesto: IPalinsesto;
 }
 
-export const Calendar = ({ data }: CalendarProps) => {
-  const [hasTableBeenGenerated, setTableBeenGenerated] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-
+export const Calendar = ({ palinsesto }: CalendarProps) => {
   const generateTableStructure = (hoursOfDay: number, daysOfWeek: number): string => {
     let hours = "";
     for (let i = 0; i < hoursOfDay * 2; i++) {
@@ -30,8 +26,6 @@ export const Calendar = ({ data }: CalendarProps) => {
   };
 
   const generateContent = async (): Promise<void> => {
-    setIsLoading(true);
-    const palinsesto = data;
     for (let d = 0; d < palinsesto.length; d++) {
       for (let el = 0; el < palinsesto[d].length; el++) {
         let startTime = parseInt(palinsesto[d][el].start.split(".")[0]);
@@ -52,26 +46,21 @@ export const Calendar = ({ data }: CalendarProps) => {
         }
       }
     }
-    setIsLoading(false);
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    setIsLoading(true);
     if (globalThis.document) {
       const bodyCalendar = globalThis.document.querySelector(".bodyCalendar");
       if (bodyCalendar) {
         bodyCalendar.innerHTML = generateTableStructure(24, 7);
-        setTableBeenGenerated(true);
       }
     }
-    setIsLoading(false);
   }, []);
 
   useEffect(() => {
-    if (!hasTableBeenGenerated) return;
     generateContent();
-  }, [hasTableBeenGenerated]);
+  }, [palinsesto]);
 
   return (
     <div className="calendar">
@@ -92,7 +81,7 @@ export const Calendar = ({ data }: CalendarProps) => {
             </thead>
             <tbody className="bodyCalendar"></tbody>
           </table>
-          {isLoading && <div />}
+          <div />
         </div>
       </div>
     </div>
