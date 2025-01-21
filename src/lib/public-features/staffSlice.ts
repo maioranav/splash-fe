@@ -1,27 +1,32 @@
 import { IStaff } from "@/app/models/IStaff";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  staff: [] as IStaff[],
+export interface StaffState {
+  staff: IStaff[];
+  status: "idle" | "loading" | "failed";
+}
+
+const initialState: StaffState = {
+  staff: [],
   status: "idle",
 };
 
-export const allStaffFetch = createAsyncThunk("fetch-staff", async (nonce: string) => {
+export const allStaffFetch = createAsyncThunk<IStaff[], string>("fetch-staff", async (nonce, { rejectWithValue }) => {
   try {
     const response = await fetch(process.env.NEXT_PUBLIC_BASE_API_URL + "/staff/all", {
       headers: { "x-fe-nonce": nonce },
     });
     if (response.ok) {
-      const data: IStaff[] = await response.json();
+      const data = await response.json();
       return data;
     } else {
       const res = await response.json();
       console.log(res.message);
-      return Promise.reject(res.message);
+      return rejectWithValue(res.message);
     }
   } catch (error) {
-    console.log(error);
-    return Promise.reject();
+    console.error(error);
+    return rejectWithValue("Network Error");
   }
 });
 
@@ -36,7 +41,7 @@ const staffSlice = createSlice({
       })
       .addCase(allStaffFetch.fulfilled, (state, action) => {
         state.status = "idle";
-        state.staff = action.payload as IStaff[];
+        state.staff = action.payload;
       })
       .addCase(allStaffFetch.rejected, (state) => {
         state.status = "failed";
@@ -44,4 +49,4 @@ const staffSlice = createSlice({
   },
 });
 
-export default staffSlice;
+export default staffSlice.reducer;

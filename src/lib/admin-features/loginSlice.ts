@@ -1,36 +1,40 @@
-import { loginDTO } from "@/app/models/login.dto";
 import { createAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { loginDTO } from "@/app/models/login.dto";
 
 export const cleanToken = createAction("CLEAN_TOKEN");
 
-const initialState = {
+export interface LoginState {
+  token: string;
+  status: "idle" | "loading" | "failed"; // Usa un tipo union per gli stati possibili
+}
+
+const initialState: LoginState = {
   token: "" as string,
   status: "idle",
 };
 
-export const myTokenFetch = createAsyncThunk("fetch-token", async ({ username, password, gRecaptcha }: loginDTO) => {
-  try {
-    const response = await fetch(process.env.NEXT_PUBLIC_BASE_API_URL + "/admin/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "g-recaptcha-token": gRecaptcha || "" },
-      body: JSON.stringify({
-        username,
-        password,
-      }),
-    });
-    if (response.ok) {
-      const data = await response.json();
-      return data.token as string;
-    } else {
-      const res = await response.json();
-      console.log(res.message);
-      return Promise.reject(res.message);
+export const myTokenFetch = createAsyncThunk<string, loginDTO>(
+  "fetch-token",
+  async ({ username, password, gRecaptcha }: loginDTO, { rejectWithValue }) => {
+    try {
+      const response = await fetch(process.env.NEXT_PUBLIC_BASE_API_URL + "/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "g-recaptcha-token": gRecaptcha || "" },
+        body: JSON.stringify({ username, password }),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        return data.token;
+      } else {
+        const res = await response.json();
+        return rejectWithValue(res.message);
+      }
+    } catch (error) {
+      console.error(error);
+      return rejectWithValue("Network error");
     }
-  } catch (error) {
-    console.log(error);
-    return Promise.reject();
   }
-});
+);
 
 const loginSlice = createSlice({
   name: "token",
@@ -48,9 +52,11 @@ const loginSlice = createSlice({
       .addCase(myTokenFetch.rejected, (state) => {
         state.status = "failed";
       })
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      .addCase(cleanToken, (state) => (state = initialState));
+      .addCase(cleanToken, (state) => {
+        state.token = initialState.token;
+        state.status = initialState.status;
+      });
   },
 });
 
-export default loginSlice;
+export default loginSlice.reducer;

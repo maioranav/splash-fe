@@ -13,20 +13,20 @@ export default function AdminPage() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (globalState?.nonce.nonce.length == 0 || globalState?.nonce.status === "failed") {
+    if (globalState?.nonce?.nonce.length == 0 || globalState?.nonce?.status === "failed") {
       dispatch(feNonceFetch());
     }
   }, []);
 
   useEffect(() => {
-    if (globalState?.nonce.status === "idle" && globalState?.nonce.nonce) {
+    if (globalState?.nonce?.status === "idle" && globalState?.nonce.nonce) {
       dispatch(allStaffFetch(globalState?.nonce.nonce));
       dispatch(allShowsFetch(globalState?.nonce.nonce));
     }
   }, [globalState?.nonce]);
 
   useEffect(() => {
-    if (!globalState?.nonce.nonce) return;
+    if (!globalState?.nonce?.nonce) return;
 
     // opening a connection to the server to begin receiving events from it
     const eventSource = new EventSource(process.env.NEXT_PUBLIC_BASE_API_URL + "/onair/?nonce=" + globalState?.nonce.nonce);
@@ -39,7 +39,7 @@ export default function AdminPage() {
 
     // terminating the connection on component unmount
     return () => eventSource.close();
-  }, [globalState?.nonce.nonce]);
+  }, [globalState?.nonce?.nonce]);
 
   return (
     <div className="container">
@@ -49,7 +49,7 @@ export default function AdminPage() {
           <div className="card" style={{ minWidth: "20rem" }}>
             <div className="card-body d-flex flex-column align-items-center">
               <h4>Programmi Attivi</h4>
-              <p className="display-3">{globalState?.shows.shows.length}</p>
+              <p className="display-3">{globalState?.shows?.shows.length}</p>
             </div>
           </div>
           <div className="card" style={{ minWidth: "20rem" }}>
@@ -61,7 +61,7 @@ export default function AdminPage() {
           <div className="card" style={{ minWidth: "20rem" }}>
             <div className="card-body d-flex flex-column align-items-center">
               <h4>Staff attivi in elenco</h4>
-              <p className="display-3">{globalState?.staff.staff.length}</p>
+              <p className="display-3">{globalState?.staff?.staff.length}</p>
             </div>
           </div>
         </div>

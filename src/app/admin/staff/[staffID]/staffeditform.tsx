@@ -19,7 +19,7 @@ export const StaffEditForm = ({ staffID }: IStaffEditForm) => {
     setFetchState("loading");
     try {
       const request = await fetch(process.env.NEXT_PUBLIC_BASE_API_URL + "/staff/" + staffID, {
-        headers: { "Content-Type": "application/json", "x-fe-nonce": nonceSlice.nonce },
+        headers: { "Content-Type": "application/json", "x-fe-nonce": nonceSlice?.nonce ?? "" },
       });
       if (request.ok) {
         const data = await request.json();
@@ -43,7 +43,7 @@ export const StaffEditForm = ({ staffID }: IStaffEditForm) => {
     try {
       const request = await fetch(process.env.NEXT_PUBLIC_BASE_API_URL + "/staff" + (staffID ? "/" + staffID : ""), {
         method,
-        headers: { "Content-Type": "application/json", Authorization: authSlice.token },
+        headers: { "Content-Type": "application/json", Authorization: authSlice?.token ?? "" },
         body: JSON.stringify(staff),
       });
       if (request.ok) {

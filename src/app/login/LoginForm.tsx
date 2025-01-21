@@ -27,7 +27,7 @@ export const LoginForm = () => {
   };
 
   useEffect(() => {
-    if (loginSlice.token && loginSlice.status === "idle") redirect("/admin");
+    if (loginSlice?.token && loginSlice.status === "idle") redirect("/admin");
   }, [loginSlice]);
 
   return (
@@ -46,8 +46,8 @@ export const LoginForm = () => {
             </label>
             <input type="password" className="form-control" id="password" required onChange={(e) => handleChange(e)} />
           </div>
-          <button type="submit" className="btn btn-primary" disabled={loginSlice.status == "loading"}>
-            {loginSlice.status == "loading" ? (
+          <button type="submit" className="btn btn-primary" disabled={loginSlice?.status == "loading"}>
+            {loginSlice?.status == "loading" ? (
               <div className="spinner-border text-primary" role="status">
                 <span className="visually-hidden">Loading...</span>
               </div>
@@ -55,7 +55,7 @@ export const LoginForm = () => {
               "Login"
             )}
           </button>
-          {loginSlice.status == "failed" && (
+          {loginSlice?.status == "failed" && (
             <div className="alert alert-danger my-3" role="alert">
               Unable to login
             </div>

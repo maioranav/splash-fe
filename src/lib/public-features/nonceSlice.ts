@@ -2,7 +2,12 @@ import { createAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const clearNonce = createAction("CLEAR_NONCE");
 
-const initialState = {
+export interface NonceState {
+  nonce: string;
+  status: "idle" | "loading" | "failed";
+}
+
+const initialState: NonceState = {
   nonce: "",
   status: "idle",
 };
@@ -13,20 +18,19 @@ interface INonce {
   data: string;
 }
 
-export const feNonceFetch = createAsyncThunk("fetch-nonce", async () => {
+export const feNonceFetch = createAsyncThunk<string, void>("fetch-nonce", async (_, { rejectWithValue }) => {
   try {
-    const response = await fetch(process.env.NEXT_PUBLIC_BASE_API_URL + "/main/title/FRONTEND SECRET NONCE");
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/main/title/FRONTEND SECRET NONCE`);
     if (response.ok) {
       const data: INonce = await response.json();
       return data.data;
     } else {
       const res = await response.json();
-      console.log(res.message);
-      return Promise.reject(res.message);
+      return rejectWithValue(res.message);
     }
   } catch (error) {
-    console.log(error);
-    return Promise.reject();
+    console.error("Error fetching nonce:", error);
+    return rejectWithValue("Network error");
   }
 });
 
@@ -46,9 +50,11 @@ const nonceSlice = createSlice({
       .addCase(feNonceFetch.rejected, (state) => {
         state.status = "failed";
       })
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      .addCase(clearNonce, (state) => (state = initialState));
+      .addCase(clearNonce, (state) => {
+        state.nonce = initialState.nonce;
+        state.status = initialState.status;
+      });
   },
 });
 
-export default nonceSlice;
+export default nonceSlice.reducer;

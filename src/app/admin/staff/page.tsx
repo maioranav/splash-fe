@@ -25,7 +25,7 @@ export default function AdminStaff() {
       <button
         type="button"
         id="refresh-staff"
-        onClick={() => dispatch(allStaffFetch(nonceSlice.nonce))}
+        onClick={() => dispatch(allStaffFetch(nonceSlice?.nonce ?? ""))}
         className="btn btn-primary-refresh position-absolute"
         title="Aggiungi Staff"
       >
