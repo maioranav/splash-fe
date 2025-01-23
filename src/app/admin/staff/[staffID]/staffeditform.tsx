@@ -73,6 +73,31 @@ export const StaffEditForm = ({ staffID }: IStaffEditForm) => {
     setStaff({ ...staff, social: {} });
   };
 
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files?.[0]) return;
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+    setFetchState("loading");
+    try {
+      const request = await fetch(process.env.NEXT_PUBLIC_BASE_API_URL + "/uploads", {
+        method: "POST",
+        headers: { Authorization: authSlice?.token ?? "" },
+        body: formData,
+      });
+      if (request.ok) {
+        const data = await request.json();
+        setStaff({ ...staff, img: data.filename });
+        setFetchState("idle");
+      } else {
+        setFetchState("error");
+      }
+    } catch (err) {
+      setFetchState("error");
+      console.error(err);
+    }
+  };
+
   return (
     <>
       <Stinger options={{ title: staff.nome ? staff.nome : "Nuovo Staff", subtitle: staffID ? "modifica" : "creazione" }} />
@@ -165,9 +190,12 @@ export const StaffEditForm = ({ staffID }: IStaffEditForm) => {
         <div className="col-4 position-relative p-0">
           {staffID && staff.img && (
             <>
+              <input id="imageUpload" title="Immagine di Profilo" type="file" onChange={handleFileChange} />
               {/* //TODO: Aggiungere metodo di upload e form-data*/}
               <img src={process.env.NEXT_PUBLIC_BASE_API_URL + "/uploads/" + staff.img} alt={staff.nome} className="staff-edit-img" />
-              <div className="position-absolute w-100 d-flex top-0 change-staff-img">Cambia immagine</div>
+              <div className="position-absolute w-100 d-flex top-0 change-staff-img" onClick={() => document.getElementById("imageUpload")?.click()}>
+                Cambia immagine
+              </div>
             </>
           )}
         </div>
