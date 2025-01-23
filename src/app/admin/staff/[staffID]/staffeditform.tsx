@@ -6,14 +6,12 @@ import { useAppSelector } from "@/lib/hooks";
 import { useEffect, useState } from "react";
 import "./staffeditform.scss";
 import { Stinger } from "@/app/components/stinger/Stinger";
-import { useRouter } from "next/navigation";
 
 export const StaffEditForm = ({ staffID }: IStaffEditForm) => {
   const nonceSlice = useAppSelector((state) => state.nonce);
   const authSlice = useAppSelector((state) => state.login);
   const [staff, setStaff] = useState<IStaff>({ nome: "", ruolo: Ruoli.DJ });
   const [fetchState, setFetchState] = useState<"idle" | "success" | "error" | "loading">("idle");
-  const router = useRouter();
 
   const getStaffData = async (staffID: string) => {
     setFetchState("loading");
@@ -47,8 +45,8 @@ export const StaffEditForm = ({ staffID }: IStaffEditForm) => {
         body: JSON.stringify(staff),
       });
       if (request.ok) {
-        const data = (await request.json()) as IStaff;
-        router.push(`/admin/staff/${data.id}`);
+        await request.json();
+        setFetchState("success");
       } else {
         setFetchState("error");
       }
@@ -70,9 +68,14 @@ export const StaffEditForm = ({ staffID }: IStaffEditForm) => {
     setStaff({ ...staff, [e.currentTarget.id]: e.currentTarget.value });
   };
 
+  const handleNewSocialInfo = (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setStaff({ ...staff, social: {} });
+  };
+
   return (
     <>
-      <Stinger options={{ title: staff.nome ? staff.nome : "Nuovo Staff", subtitle: staff.nome ? "modifica" : "creazione" }} />
+      <Stinger options={{ title: staff.nome ? staff.nome : "Nuovo Staff", subtitle: staffID ? "modifica" : "creazione" }} />
       <div className="row my-5">
         <div className="col-8">
           <form onSubmit={handleSubmit}>
@@ -138,7 +141,7 @@ export const StaffEditForm = ({ staffID }: IStaffEditForm) => {
             )}
             <div className="mb-3 d-flex gap-3">
               {staffID && !staff.social && (
-                <button type="button" className="btn btn-primary-outline">
+                <button type="button" className="btn btn-primary-outline" onClick={handleNewSocialInfo}>
                   Aggiungi Social
                 </button>
               )}
