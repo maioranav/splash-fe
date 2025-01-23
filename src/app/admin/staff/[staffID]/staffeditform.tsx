@@ -45,8 +45,9 @@ export const StaffEditForm = ({ staffID }: IStaffEditForm) => {
         body: JSON.stringify(staff),
       });
       if (request.ok) {
-        await request.json();
-        setFetchState("success");
+        const data = await request.json();
+        if (method == "POST") window.location.replace(`/admin/staff/${data.id}`);
+        else setFetchState("success");
       } else {
         setFetchState("error");
       }
@@ -188,15 +189,19 @@ export const StaffEditForm = ({ staffID }: IStaffEditForm) => {
           </form>
         </div>
         <div className="col-4 position-relative p-0">
+          <input id="imageUpload" title="Immagine di Profilo" type="file" onChange={handleFileChange} />
           {staffID && staff.img && (
             <>
-              <input id="imageUpload" title="Immagine di Profilo" type="file" onChange={handleFileChange} />
-              {/* //TODO: Aggiungere metodo di upload e form-data*/}
               <img src={process.env.NEXT_PUBLIC_BASE_API_URL + "/uploads/" + staff.img} alt={staff.nome} className="staff-edit-img" />
               <div className="position-absolute w-100 d-flex top-0 change-staff-img" onClick={() => document.getElementById("imageUpload")?.click()}>
                 Cambia immagine
               </div>
             </>
+          )}
+          {staffID && !staff.img && (
+            <button className="btn btn-primary" onClick={() => document.getElementById("imageUpload")?.click()} title="Aggiungi immagine">
+              Aggiungi immagine
+            </button>
           )}
         </div>
       </div>
