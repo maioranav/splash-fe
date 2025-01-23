@@ -29,8 +29,8 @@ export default function Palinsesto() {
 
   const stingerOptions = {
     url: "",
-    title: "Il nostro staff al completo",
-    subtitle: "Seguici sui social",
+    title: "La nostra programmazione",
+    subtitle: "I vostri contenuti preferiti",
   };
   const showsMapped = (array: IShow[]) => {
     const palinsesto: IPalinsesto = Array.from({ length: 7 }, () => []);
@@ -53,7 +53,7 @@ export default function Palinsesto() {
   };
 
   return (
-    <div className="container my-5">
+    <div className="container my-2">
       <Stinger options={stingerOptions} />
       <div className={styles.calendarblock}>{palinsesto && palinsesto.length == 7 && <Calendar palinsesto={palinsesto} />}</div>
       {palinsesto && palinsesto.length == 7 && <CalendarMobile palinsesto={palinsesto} />}
