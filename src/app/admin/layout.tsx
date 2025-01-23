@@ -27,6 +27,10 @@ export default function AdminLayout({
     if (!login?.token) redirect("/login");
   }, []);
 
+  useEffect(() => {
+    if (login?.status == "failed") redirect("/login");
+  }, [login?.status]);
+
   const handleLogout = () => {
     dispatch(cleanToken());
     redirect("/login");

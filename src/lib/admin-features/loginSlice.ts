@@ -36,6 +36,24 @@ export const myTokenFetch = createAsyncThunk<string, loginDTO>(
   }
 );
 
+export const myTokenValidate = createAsyncThunk<string, string>("validate-token", async (token: string, { rejectWithValue }) => {
+  try {
+    const response = await fetch(process.env.NEXT_PUBLIC_BASE_API_URL + "/admin/validate", {
+      headers: { "Content-Type": "application/json", Authorization: token },
+    });
+    if (response.ok) {
+      const data = await response.json();
+      return data.status;
+    } else {
+      const res = await response.json();
+      return rejectWithValue(res.message);
+    }
+  } catch (error) {
+    console.error(error);
+    return rejectWithValue("Network error");
+  }
+});
+
 const loginSlice = createSlice({
   name: "token",
   initialState,
@@ -55,6 +73,16 @@ const loginSlice = createSlice({
       .addCase(cleanToken, (state) => {
         state.token = initialState.token;
         state.status = initialState.status;
+      })
+      .addCase(myTokenValidate.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(myTokenValidate.fulfilled, (state) => {
+        state.status = "idle";
+      })
+      .addCase(myTokenValidate.rejected, (state) => {
+        state.token = "";
+        state.status = "failed";
       });
   },
 });

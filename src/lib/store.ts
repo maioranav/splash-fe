@@ -4,6 +4,7 @@ import { encryptTransform } from "redux-persist-transform-encrypt";
 import { FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from "redux-persist";
 import storage from "./storage";
 import { rootReducer } from "./rootReducer";
+import { rehydrateMiddleware } from "./middlewares";
 
 const persistConfig = {
   key: "root",
@@ -12,7 +13,7 @@ const persistConfig = {
   transforms: [encryptTransform({ secretKey: process.env.REACT_APP_SECRET_KEY || "generickeysupersecrettotest" })],
 };
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+export const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const makeStore = () => {
   return configureStore({
@@ -23,7 +24,7 @@ export const makeStore = () => {
         serializableCheck: {
           ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
         },
-      }),
+      }).concat(rehydrateMiddleware),
   });
 };
 export type AppStore = ReturnType<typeof makeStore>;
