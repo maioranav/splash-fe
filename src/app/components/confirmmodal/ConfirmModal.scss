@@ -1,0 +1,56 @@
+.custom-modal-container {
+  background-color: #8b8b8b65;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 12;
+
+  .confirm-modal {
+    background-color: var(--bs-light);
+    max-width: 400px;
+    box-shadow: 4px 4px 4px 0px #777777;
+    padding: 2rem;
+    border-radius: 12px;
+
+    h5 {
+      font-size: 24px;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+    }
+
+    .custom-modal-btns {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+      justify-content: flex-end;
+
+      button {
+        box-shadow: none;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 6px;
+        cursor: pointer;
+        width: 120px;
+
+        &:first-child {
+          background-color: transparent;
+          color: var(--bs-primary);
+        }
+
+        &:last-child {
+          background-color: var(--bs-danger);
+          color: var(--bs-light);
+        }
+      }
+    }
+  }
+}
