@@ -1,6 +1,7 @@
 "use client";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { feNonceFetch } from "@/lib/public-features/nonceSlice";
+import { redirect } from "next/navigation";
 import { useEffect } from "react";
 import "./shows.scss";
 import { Stinger } from "@/app/components/stinger/Stinger";
@@ -21,7 +22,25 @@ export default function AdminProgrammi() {
   }, []);
 
   return (
-    <div className="container admin-shows-list">
+    <div className="container admin-shows-list position-relative">
+      <button
+        type="button"
+        id="refresh-shows"
+        onClick={() => dispatch(allShowsFetch(nonceSlice?.nonce ?? ""))}
+        className="btn btn-primary-refresh position-absolute"
+        title="Ricarica Programmi"
+      >
+        <i className="bi bi-arrow-clockwise"></i>
+      </button>
+      <button
+        type="button"
+        id="add-show"
+        className="btn btn-primary position-absolute"
+        onClick={() => redirect("/admin/programmi/new")}
+        title="Aggiungi Programma"
+      >
+        <i className="bi bi-plus"></i>
+      </button>
       <Stinger options={{ title: "Programmi", subtitle: "" }} />
       <table className="table my-5">
         <thead>
@@ -51,7 +70,7 @@ export default function AdminProgrammi() {
                   ))}
                 </td>
                 <td>
-                  <button type="button" className="btn btn-primary" disabled>
+                  <button type="button" className="btn btn-primary" onClick={() => redirect("/admin/programmi/" + el.id)}>
                     Modifica
                   </button>
                 </td>

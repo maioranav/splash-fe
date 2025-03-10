@@ -1,9 +1,9 @@
 import { IStaff } from "./IStaff";
 
 export type IShow = {
-  id: string;
+  id?: string;
   titolo: string;
-  img: string;
+  img?: string;
   artista?: IStaff;
   appuntamenti: IAppuntamento[];
 };
