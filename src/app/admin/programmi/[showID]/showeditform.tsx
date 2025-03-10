@@ -52,7 +52,7 @@ export const ShowEditForm = ({ showID }: IShowEditForm) => {
       });
       if (request.ok) {
         const data = await request.json();
-        if (method == "POST") window.location.replace(`/admin/show/${data.id}`);
+        if (method == "POST") window.location.replace(`/admin/programmi/${data.id}`);
         else setFetchState("success");
       } else {
         setFetchState("error");
