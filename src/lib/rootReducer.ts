@@ -2,6 +2,7 @@ import nonceSlice from "./public-features/nonceSlice";
 import staffSlice from "./public-features/staffSlice";
 import showSlice from "./public-features/showSlice";
 import loginSlice from "./admin-features/loginSlice";
+import podcastSlice from "./admin-features/podcastSlice";
 import { combineSlices } from "@reduxjs/toolkit";
 
 export const rootReducer = combineSlices({
@@ -9,4 +10,5 @@ export const rootReducer = combineSlices({
   staff: staffSlice,
   shows: showSlice,
   login: loginSlice,
+  podcast: podcastSlice,
 });
