@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { IShow } from "@/app/models/IShow";
+import { IAppuntamento, IShow } from "@/app/models/IShow";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { Stinger } from "@/app/components/stinger/Stinger";
 import "./showeditform.scss";
 import { allStaffFetch } from "@/lib/public-features/staffSlice";
+import { WeekDayUtils } from "@/app/utils/weekday.service";
 
 export const ShowEditForm = ({ showID }: IShowEditForm) => {
   const dispatch = useAppDispatch();
@@ -14,6 +15,12 @@ export const ShowEditForm = ({ showID }: IShowEditForm) => {
   const staffSlice = useAppSelector((state) => state.staff);
   const [show, setShow] = useState<IShow>({ appuntamenti: [], titolo: "" });
   const [fetchState, setFetchState] = useState<"idle" | "success" | "error" | "loading">("idle");
+  const [appointmentState, setAppointmentState] = useState<"idle" | "success" | "error" | "loading">("idle");
+  const [newAppointment, setNewAppointment] = useState<IAppuntamento>({
+    giorno: 1,
+    inizio: "",
+    fine: "",
+  });
 
   const getShowData = async (showID: string) => {
     setFetchState("loading");
@@ -93,12 +100,57 @@ export const ShowEditForm = ({ showID }: IShowEditForm) => {
   };
 
   const handleChangeSelect = (e: React.FormEvent<HTMLSelectElement>) => {
-    console.log(e.currentTarget.value);
     if (e.currentTarget.value) {
       setShow({ ...show, [e.currentTarget.id]: staffSlice?.staff.find((el) => el.id == e.currentTarget.value) });
     } else {
       setShow({ ...show, [e.currentTarget.id]: null });
     }
+  };
+
+  const handleAppointmentChange = (e: React.FormEvent<HTMLInputElement | HTMLSelectElement>) => {
+    setNewAppointment({ ...newAppointment, [e.currentTarget.id]: e.currentTarget.value });
+  };
+
+  const handleAddAppointment = async () => {
+    if (!showID) return;
+
+    setAppointmentState("loading");
+    try {
+      const request = await fetch(process.env.NEXT_PUBLIC_BASE_API_URL + "/appuntamenti", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: authSlice?.token ?? "",
+        },
+        body: JSON.stringify({
+          programma: { id: showID },
+          ...newAppointment,
+        }),
+      });
+
+      if (request.ok) {
+        const createdAppointment = await request.json();
+        setShow({
+          ...show,
+          appuntamenti: [...(show.appuntamenti || []), createdAppointment],
+        });
+        setNewAppointment({ giorno: 1, inizio: "", fine: "" });
+        setAppointmentState("success");
+        setTimeout(() => setAppointmentState("idle"), 2000);
+      } else {
+        setAppointmentState("error");
+      }
+    } catch (err) {
+      console.error(err);
+      setAppointmentState("error");
+    }
+  };
+
+  const handleRemoveAppointment = (index: number) => {
+    setShow({
+      ...show,
+      appuntamenti: show.appuntamenti.filter((_, i) => i !== index),
+    });
   };
 
   return (
@@ -159,6 +211,82 @@ export const ShowEditForm = ({ showID }: IShowEditForm) => {
           )}
         </div>
       </div>
+      {showID && (
+        <div className="row my-4">
+          <h3>Gestione Appuntamenti</h3>
+          <div className="col-12 appointment-form">
+            <div className="d-flex gap-3 align-items-end">
+              <div className="mb-3">
+                <label htmlFor="giorno">Giorno</label>
+                <select id="giorno" className="form-select" value={newAppointment.giorno} onChange={handleAppointmentChange}>
+                  {[1, 2, 3, 4, 5, 6, 7].map((day) => (
+                    <option key={day} value={day}>
+                      {WeekDayUtils.getWeekDayName(day)}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="mb-3">
+                <label htmlFor="inizio">Orario Inizio</label>
+                <input
+                  type="text"
+                  id="inizio"
+                  className="form-control"
+                  placeholder="hh.mm"
+                  value={newAppointment.inizio}
+                  onChange={handleAppointmentChange}
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="fine">Orario Fine</label>
+                <input
+                  type="text"
+                  id="fine"
+                  className="form-control"
+                  placeholder="hh.mm"
+                  value={newAppointment.fine}
+                  onChange={handleAppointmentChange}
+                />
+              </div>
+              <div className="d-flex gap-2 align-items-center">
+                <button type="button" className="btn btn-primary mb-3" onClick={handleAddAppointment} disabled={appointmentState === "loading"}>
+                  Aggiungi Appuntamento
+                </button>
+                {appointmentState === "loading" && <div className="spinner-border spinner-border-sm text-primary mb-3" role="status"></div>}
+                {appointmentState === "success" && <div className="text-success mb-3">✓ Salvato</div>}
+                {appointmentState === "error" && <div className="text-danger mb-3">Errore nel salvataggio</div>}
+              </div>
+            </div>
+
+            {show.appuntamenti?.length > 0 && (
+              <table className="table mt-3">
+                <thead>
+                  <tr>
+                    <th>Giorno</th>
+                    <th>Inizio</th>
+                    <th>Fine</th>
+                    <th>Azioni</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {show.appuntamenti?.map((app, index) => (
+                    <tr key={index}>
+                      <td>{WeekDayUtils.getWeekDayName(app.giorno)}</td>
+                      <td>{app.inizio}</td>
+                      <td>{app.fine}</td>
+                      <td>
+                        <button type="button" className="btn btn-danger btn-sm" onClick={() => handleRemoveAppointment(index)}>
+                          <i className="bi bi-trash" />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+          </div>
+        </div>
+      )}
     </>
   );
 };

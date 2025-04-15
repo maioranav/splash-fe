@@ -8,8 +8,8 @@ export type IShow = {
   appuntamenti: IAppuntamento[];
 };
 
-interface IAppuntamento {
-  id: string;
+export interface IAppuntamento {
+  id?: string;
   giorno: number; // Da 1 a 7
   inizio: string; // Formato orario es. "22.00"
   fine: string; // Formato orario es. "23.00"
